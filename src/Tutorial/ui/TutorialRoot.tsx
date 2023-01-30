@@ -16,19 +16,19 @@ export function TutorialRoot(props: IProps): React.ReactElement {
     <>
       <Typography variant="h4">Tutorial / Documentation</Typography>
       <Box m={2}>
-        <Button onClick={() => setConfirmResetOpen(true)}>Soft reset and Restart tutorial</Button>
+        <Button onClick={() => setConfirmResetOpen(true)}>Redemarrer le tutorial</Button>
         <ConfirmationModal
           open={confirmResetOpen}
           onClose={() => setConfirmResetOpen(false)}
           onConfirm={props.reactivateTutorial}
-          confirmationText={"This will reset all your stats to 1 and money to 1k. Are you sure?"}
+          confirmationText={"Ca va reset toutes tes stats a 1 et ta monnaie a 1k. Es tu sur?"}
         />
         <Link
           color="primary"
           target="_blank"
           href="https://bitburner.readthedocs.io/en/latest/guidesandtips/gettingstartedguideforbeginnerprogrammers.html"
         >
-          <Typography>Getting Started</Typography>
+          <Typography>Se lancer</Typography>
         </Link>
         <br />
         <Link
