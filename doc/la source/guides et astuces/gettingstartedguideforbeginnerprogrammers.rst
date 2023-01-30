@@ -1,7 +1,7 @@
 Guide de démarrage pour les programmeurs débutants
 ==============================================
 
-.. note :: Notez que les scripts et les stratégies donnés dans ce guide ne sont pas nécessairement
+.. note:: Notez que les scripts et les stratégies donnés dans ce guide ne sont pas nécessairement
           optimale. Ils sont juste destinés à vous présenter le jeu et à vous aider à obtenir
           a débuté.
 
@@ -366,40 +366,40 @@ Après avoir cliqué sur le bouton, vous commencerez à étudier et à acquérir
 faites cela, vous ne pouvez interagir avec aucune autre partie du jeu tant que vous n'avez pas cliqué sur le bouton
 that says "Stop taking course".
 
-Right now, we want a hacking level of 10. You need approximately 174 hacking experience to reach
-level 10. You can check how much hacking experience you have by clicking the `Stats` tab
-on the left-hand navigation menu, or by using |Keyboard shortcut| Alt + c.
-Since studying at Rothman University earns you 1 experience per second, this will take
-174 seconds, or approximately 3 minutes. Feel free to do something in the meantime!
+À l'heure actuelle, nous voulons un niveau de piratage de 10. Vous avez besoin d'environ 174 expériences de piratage pour atteindre
+niveau 10. Vous pouvez vérifier votre expérience de piratage en cliquant sur l'onglet "Statistiques"
+dans le menu de navigation de gauche, ou en utilisant |Raccourci clavier| Alt+C.
+Étant donné qu'étudier à l'Université Rothman vous rapporte 1 expérience par seconde, cela prendra
+174 secondes, soit environ 3 minutes. N'hésitez pas à faire quelque chose en attendant !
 
-Editing our Hacking Script
---------------------------
-Now that we have a hacking level of 10, we can hack the :code:`joesguns` server. This server
-will be slightly more profitable than :code:`n00dles`. Therefore, we want to change our hacking
-script to target :code:`joesguns` instead of :code:`n00dles`.
+Modification de notre script de piratage
+-------------------------
+Maintenant que nous avons un niveau de piratage de 10, nous pouvons pirater le serveur :code:`joesguns`. Ce serveur
+sera légèrement plus rentable que :code:`n00dles`. Par conséquent, nous voulons changer notre piratage
+script pour cibler :code:`joesguns` au lieu de :code:`n00dles`.
 
-Go to |Terminal| and edit the hacking script by entering::
+Allez à |Terminal| et éditez le script de piratage en saisissant ::
 
     $ home
     $ nano early-hack-template.js
 
-At the top of the script, change the `target` variable to be `joesguns`:
+En haut du script, changez la variable `target` en `joesguns` :
 
 .. code:: javascript
 
     const target = "joesguns";
 
-Note that this will **NOT** affect any instances of the script that are already running.
-This will only affect instances of the script that are ran from this point forward.
+Notez que cela n'affectera **PAS** les instances du script déjà en cours d'exécution.
+Cela n'affectera que les instances du script exécutées à partir de maintenant.
 
-Creating a New Script to Purchase New Servers
----------------------------------------------
-Next, we're going to create a script that automatically purchases additional servers. These
-servers will be used to run many scripts. Running this script will initially be very
-expensive since purchasing a server costs money, but it will pay off in the long run.
+Créer un nouveau script pour acheter de nouveaux serveurs
+------------------------------------------------
+Ensuite, nous allons créer un script qui achète automatiquement des serveurs supplémentaires. Celles-ci
+les serveurs seront utilisés pour exécuter de nombreux scripts. L'exécution de ce script sera initialement très
+coûteux puisque l'achat d'un serveur coûte de l'argent, mais il sera payant à long terme.
 
-In order to create this script, you should familiarize yourself with the following
-Netscript functions:
+Afin de créer ce script, vous devez vous familiariser avec les éléments suivants
+Fonctions NetScript :
 
 * :js:func:`purchaseServer`
 * :js:func:`getPurchasedServerCost`
@@ -408,219 +408,220 @@ Netscript functions:
 * :js:func:`scp`
 * :js:func:`exec`
 
-Create the script by going to |Terminal| and typing::
+Créez le script en allant dans |Terminal| et en tapant ::
 
     $ home
     $ nano purchase-server-8gb.js
 
-Paste the following code into the script editor:
+Collez le code suivant dans l'éditeur de script :
 
 .. code:: javascript
     /** @param {NS} ns */
     export async function main(ns) {
-        // How much RAM each purchased server will have. In this case, it'll
-        // be 8GB.
+        // Combien de RAM aura chaque serveur acheté. Dans ce cas, ça va
+        // était de 8 Go.
         const ram = 8;
 
-        // Iterator we'll use for our loop
+        // Itérateur que nous utiliserons pour notre boucle
         let i = 0;
 
-        // Continuously try to purchase servers until we've reached the maximum
-        // amount of servers
+        // Essayez continuellement d'acheter des serveurs jusqu'à ce que nous ayons atteint le maximum
+        // nombre de serveurs
         while (i < ns.getPurchasedServerLimit()) {
-            // Check if we have enough money to purchase a server
+            // Vérifie si nous avons assez d'argent pour acheter un serveur
             if (ns.getServerMoneyAvailable("home") > ns.getPurchasedServerCost(ram)) {
-                // If we have enough money, then:
-                //  1. Purchase the server
-                //  2. Copy our hacking script onto the newly-purchased server
-                //  3. Run our hacking script on the newly-purchased server with 3 threads
-                //  4. Increment our iterator to indicate that we've bought a new server
+                // Si nous avons assez d'argent, alors :
+                // 1. Achetez le serveur
+                // 2. Copiez notre script de piratage sur le serveur nouvellement acheté
+                // 3. Exécutez notre script de piratage sur le serveur nouvellement acheté avec 3 threads
+                // 4. Incrémente notre itérateur pour indiquer que nous avons acheté un nouveau serveur
                 let hostname = ns.purchaseServer("pserv-" + i, ram);
                 ns.scp("early-hack-template.script", hostname);
                 ns.exec("early-hack-template.script", hostname, 3);
                 ++i;
             }
-            //Make the script wait for a second before looping again.
-            //Removing this line will cause an infinite loop and crash the game.
+            //Faire attendre le script une seconde avant de boucler à nouveau.
+            // La suppression de cette ligne provoquera une boucle infinie et fera planter le jeu.
             await ns.sleep(1000);
         }
     }
 
-This code uses a while loop to purchase the maximum amount of servers using the
-:js:func:`purchaseServer` Netscript function. Each of these servers will have
-8GB of RAM, as defined in the :code:`ram` variable. Note that the script uses the command
-:code:`getServerMoneyAvailable("home")` to get the amount of money you currently have.
-This is then used to check if you can afford to purchase a server.
+Ce code utilise une boucle while pour acheter le nombre maximum de serveurs utilisant le
+:js:func:`purchaseServer` Fonction Netscript. Chacun de ces serveurs aura
+8 Go de RAM, comme défini dans la variable :code:`ram`. Notez que le script utilise la commande
+:code:`getServerMoneyAvailable("home")` pour obtenir le montant d'argent dont vous disposez actuellement.
+Ceci est ensuite utilisé pour vérifier si vous pouvez vous permettre d'acheter un serveur.
 
-Whenever the script purchases a new server, it uses the :js:func:`scp` function to copy
-our script onto that new server, and then it uses the :js:func:`exec` function to
-execute it on that server.
+Chaque fois que le script achète un nouveau serveur, il utilise la fonction :js:func:`scp` pour copier
+notre script sur ce nouveau serveur, puis il utilise la fonction :js:func:`exec` pour
+l'exécuter sur ce serveur.
 
-To run this script, go to |Terminal| and type::
+Pour exécuter ce script, allez dans |Terminal| et tapez ::
 
     $ run purchase-server-8gb.js
 
-This purchase will continuously run until it has purchased the maximum number of servers.
-When this happens, it'll mean that you have a bunch of new servers that are all running
-hacking scripts against the :code:`joesguns` server!
+Cet achat fonctionnera en continu jusqu'à ce qu'il ait acheté le nombre maximum de serveurs.
+Lorsque cela se produit, cela signifie que vous avez un tas de nouveaux serveurs qui fonctionnent tous
+pirater des scripts contre le serveur :code:`joesguns` !
 
 .. note::
 
-    The reason we're using so many scripts to hack :code:`joesguns` instead of targeting other
-    servers is because it's more effective. This early in the game, we don't have enough RAM
-    to efficiently hack multiple targets, and trying to do so would be slow as we'd be spread
-    too thin. You should definitely do this later on, though!
+    La raison pour laquelle nous utilisons autant de scripts pour pirater :code:`joesguns` au lieu de cibler les autres
+    serveurs est parce que c'est plus efficace. Au début du jeu, nous n'avons pas assez de RAM
+    pour pirater efficacement plusieurs cibles, et essayer de le faire serait lent car nous serions dispersés
+    trop mince. Vous devriez certainement le faire plus tard, cependant!
 
-Note that purchasing a server is fairly expensive, and purchasing the maximum amount of
-servers even more so. At the time of writing this guide, the script above requires
-$11 million in order to finish purchasing all of the 8GB servers.
-Therefore, we need to find additional ways to make money to speed
-up the process! These are covered in the next section.
+Notez que l'achat d'un serveur est assez cher, et l'achat du maximum de
+les serveurs encore plus. Au moment de la rédaction de ce guide, le script ci-dessus nécessite
+11 millions de dollars pour terminer l'achat de tous les serveurs de 8 Go.
+Par conséquent, nous devons trouver des moyens supplémentaires de gagner de l'argent rapidement
+le processus ! Ceux-ci sont couverts dans la section suivante.
 
-Additional Sources of Income
-----------------------------
-There are other ways to gain money in this game besides scripts & hacking.
+Sources de revenus supplémentaires
+-------------------------------------
+Il existe d'autres moyens de gagner de l'argent dans ce jeu en plus des scripts et du piratage.
 
-Hacknet Nodes
-^^^^^^^^^^^^^
-If you completed the introductory tutorial, you were already introduced to this method: Hacknet Nodes.
-Once you have enough money, you can start upgrading your Hacknet Nodes in order to increase
-your passive income stream. This is completely optional. Since each Hacknet Node upgrade
-takes a certain amount of time to "pay itself off", it may not necessarily be in your best
-interest to use these.
+Nœuds de piratage
+^^^^^^^^^^^^^^
+Si vous avez terminé le tutoriel d'introduction, vous avez déjà été initié à cette méthode : Hacknet Nodes.
+Une fois que vous avez assez d'argent, vous pouvez commencer à mettre à niveau vos nœuds Hacknet afin d'augmenter
+votre flux de revenus passifs. Ceci est complètement facultatif. Depuis chaque mise à niveau de Hacknet Node
+prend un certain temps pour "se rembourser", il n'est peut-être pas forcément au mieux
+intérêt à les utiliser.
 
-Nonetheless, Hacknet Nodes are a good source of income early in the game, although
-their effectiveness tapers off later on. If you do wind up purchasing and upgrading Hacknet Nodes,
-I would suggest only upgrading their levels for now. I wouldn't bother with RAM and Core
-upgrades until later on.
+Néanmoins, les nœuds Hacknet sont une bonne source de revenus au début du jeu, bien que
+leur efficacité s'amenuise par la suite. Si vous finissez par acheter et mettre à niveau des nœuds Hacknet,
+Je suggérerais seulement d'améliorer leurs niveaux pour l'instant. Je ne m'embêterais pas avec la RAM et le Core
+mises à niveau jusqu'à plus tard.
 
 Crime
 ^^^^^
-The best source of income right now is from :ref:`committing crimes <gameplay_crimes>`.
-This is because it not only gives you a large amount of money, but it also raises your
-hacking level. To commit crimes, click on the :code:`City` tab on the left-hand
-navigation menu or use the |Keyboard shortcut| Alt + w.
-Then, click on the link that says :code:`The Slums`.
+La meilleure source de revenus à l'heure actuelle provient de:ref:`committing crimes <gameplay_crimes>`.
+n effet, non seulement cela vous rapporte une grosse somme d'argent, mais cela augmente également la vôtre.
+niveau de piratage. Pour commettre des crimes, cliquez sur l'onglet :code:`Ville` sur le côté gauche
+menu de navigation ou utilisez le |raccourci clavier| Alt + w.
+Ensuite, cliquez sur le lien qui dit :code:`The Slums`.
 
-In the Slums, you can attempt to commit a variety of crimes, each of which gives certain
-types of experience and money if successful. See :ref:`gameplay_crimes` for more details.
+Dans les bidonvilles, vous pouvez tenter de commettre une variété de crimes, dont chacun donne certains
+types d'expérience et d'argent en cas de succès. Voir :ref:`gameplay_crimes` pour plus de détails.
 
 .. note::
 
-    You are not always successful when you attempt to commit a crime. Nothing bad happens
-    if you fail a crime, but you won't earn any money and the experience gained will be
-    reduced. Raising your stats improves your chance of successfully committing a crime.
+    Vous ne réussissez pas toujours lorsque vous tentez de commettre un crime. Rien de mal ne se passe
+    si vous échouez à un crime, mais vous ne gagnerez pas d'argent et l'expérience acquise sera
+    réduit. Augmenter vos statistiques améliore vos chances de commettre un crime avec succès.
 
-Right now, the best option is the :code:`Rob Store` crime. This takes 60 seconds to attempt
-and gives $400k if successful. I suggest this crime because you don't have to click or check
-in too often since it takes a whole minute to attempt. Furthermore, it gives hacking experience,
-which is very important right now.
+À l'heure actuelle, la meilleure option est le crime :code:`Rob Store`. Cela prend 60 secondes pour tenter
+et donne 400 000 $ en cas de succès. Je suggère ce crime parce que vous n'avez pas besoin de cliquer ou de vérifier
+trop souvent car il faut une minute entière pour essayer. De plus, cela donne une expérience de piratage,
+ce qui est très important en ce moment.
 
-Alternatively, you can also use the :code:`Shoplift` crime. This takes 2 seconds to attempt
-and gives $15k if successful. This crime is slightly easier and is more profitable
-than :code:`Rob Store`, but it requires constant clicking and it doesn't give
-hacking experience.
+Alternativement, vous pouvez également utiliser le crime :code:`Shoplift`. Cela prend 2 secondes pour tenter
+et donne 15 000 $ en cas de succès. Ce crime est légèrement plus facile et est plus rentable
+que :code:`Rob Store`, mais cela nécessite un clic constant et cela ne donne pas
+expérience de piratage.
 
-Work for a Company
-^^^^^^^^^^^^^^^^^^
-If you don't want to constantly check in on the game to commit crimes, there's another option
-that's much more passive: working for a :ref:`company <gameplay_companies>`.
-This will not be nearly as profitable  as crimes, but it's completely passive.
+Travailler pour une entreprise
+^^^^^^^^^^^^^^^^^^^^
+Si vous ne voulez pas constamment vérifier le jeu pour commettre des crimes, il existe une autre option
+c'est beaucoup plus passif : travailler pour une :ref:`company <gameplay_companies>`.
 
-Go to the :code:`City` tab on the left-hand navigation menu and then go to
-:code:`Joe's Guns`. At :code:`Joe's Guns`, there will be an option that says
-:code:`Apply to be an Employee`. Click this to get the job. Then, a new option
-will appear that simply says :code:`Work`. Click this to start working.
-Working at :code:`Joe's Guns` earns $110 per second and also grants some experience
-for every stat except hacking.
+Ce ne sera pas aussi rentable que les crimes, mais c'est complètement passif.
 
-Working for a company is completely passive. You can choose to focus on your work, do
-something else simultaneously, or switch between those two. While you focus on work,
-you will not be able to do anything else in the game. If you do something else meanwhile,
-you will not gain reputation at the same speed. You can cancel working at any time.
-You'll notice that cancelling your work early causes you to lose out on some reputation
-gains, but you shouldn't worry about this. Company reputation isn't important right now.
+Accédez à l'onglet :code:`City` dans le menu de navigation de gauche, puis accédez à
+:code:`Joe's Guns`. À :code:`Joe's Guns`, il y aura une option qui dit
+:code:`Postuler pour être un employé`. Cliquez dessus pour obtenir le travail. Ensuite, une nouvelle option
+apparaîtra qui dit simplement :code:`Work`. Cliquez dessus pour commencer à travailler.
+Travailler chez :code:`Joe's Guns` rapporte 110 $ par seconde et donne également de l'expérience
+pour chaque statistique sauf le piratage.
 
-Once your hacking hits level 75, you can visit :code:`Carmichael Security` in the city
-and get a software job there. This job offers higher pay and also earns you
-hacking experience.
+Travailler pour une entreprise est complètement passif. Vous pouvez choisir de vous concentrer sur votre travail, faire
+quelque chose d'autre simultanément, ou basculer entre les deux. Pendant que vous vous concentrez sur le travail,
+vous ne pourrez rien faire d'autre dans le jeu. Si vous faites autre chose entre-temps,
+vous ne gagnerez pas en réputation à la même vitesse. Vous pouvez annuler le travail à tout moment.
+Vous remarquerez qu'annuler votre travail plus tôt vous fait perdre une certaine réputation
+gains, mais vous ne devriez pas vous en soucier. La réputation de l'entreprise n'est pas importante en ce moment.
 
-There are many more companies in the |City tab| that offer more pay and also more gameplay
-features. Feel free to explore!
+Une fois que votre piratage atteint le niveau 75, vous pouvez visiter :code:`Carmichael Security` dans la ville
+et obtenir un travail de logiciel là-bas. Ce travail offre un salaire plus élevé et vous rapporte également
+expérience de piratage.
 
-After you Purchase your New Servers
+Il y a beaucoup plus d'entreprises dans l'onglet |Ville| qui offrent plus de rémunération et aussi plus de gameplay
+fonctionnalités. N'hésitez pas à explorer !
+
+Après avoir acheté vos nouveaux serveurs
 -----------------------------------
-After you've made a total of $11 million, your automatic server-purchasing script should
-finish running. This will free up some RAM on your home computer. We don't want this RAM
-to go to waste, so we'll make use of it. Go to |Terminal| and enter the following commands::
+Une fois que vous avez gagné un total de 11 millions de dollars, votre script d'achat automatique de serveur devrait
+finir de courir. Cela libérera de la RAM sur votre ordinateur personnel. Nous ne voulons pas de cette RAM
+à perdre, alors nous allons nous en servir. Allez à |Terminal| et entrez les commandes suivantes ::
 
     $ home
     $ run early-hack-template.js -t 3
 
-Reaching a Hacking Level of 50
+Atteindre un niveau de piratage de 50
 ------------------------------
-Once you reach a hacking level of 50, two new important parts of the game open up.
+Une fois que vous atteignez un niveau de piratage de 50, deux nouvelles parties importantes du jeu s'ouvrent.
 
-Creating your first program: BruteSSH.exe
+Création de votre premier programme : BruteSSH.exe
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-On the left-hand navigation menu you will notice a :code:`Create Programs` tab with a
-red notification icon. This indicates that there are programs available to be created.
-Click on that tab (or use |Keyboard shortcut| Alt + p) and you'll see a
-list of all the programs you can currently create. Hovering over a program will give a
-brief description of its function. Simply click on a program to start creating it.
+Dans le menu de navigation de gauche, vous remarquerez un onglet :code:`Create Programs` avec un
+icône de notification rouge. Cela indique qu'il existe des programmes disponibles pour être créés.
+Cliquez sur cet onglet (ou utilisez |raccourci clavier| Alt + p) et vous verrez un
+liste de tous les programmes que vous pouvez actuellement créer. Survoler un programme donnera un
+brève description de sa fonction. Cliquez simplement sur un programme pour commencer à le créer.
 
-Right now, the program we want to create is :code:`BruteSSH.exe`. This program is used
-to open up SSH ports on servers. This will allow you to hack more servers,
-as many servers in the game require a certain number of opened ports in order for
-:code:`NUKE.exe` to gain root access.
+En ce moment, le programme que nous voulons créer est :code:`BruteSSH.exe`. Ce programme est utilisé
+pour ouvrir des ports SSH sur les serveurs. Cela vous permettra de pirater plus de serveurs,
+car de nombreux serveurs du jeu nécessitent un certain nombre de ports ouverts pour
+:code:`NUKE.exe` pour obtenir un accès root.
 
-When you are creating a program, you cannot interact with any other part of the game.
-Feel free to cancel your work on creating a program at any time, as your progress will
-be saved and can be picked back up later. :code:`BruteSSH.exe` takes about
-10 minutes to complete.
+Lorsque vous créez un programme, vous ne pouvez interagir avec aucune autre partie du jeu.
+N'hésitez pas à annuler votre travail de création de programme à tout moment, car votre progression
+être sauvegardé et peut être récupéré plus tard. :code:`BruteSSH.exe` prend environ
+10 minutes pour terminer.
 
-Optional: Create AutoLink.exe
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-On the :code:`Create Programs` page, you will notice another program you can create
-called :code:`AutoLink.exe`. If you don't mind waiting another 10-15 minutes, you should
-go ahead and create this program. It makes it much less tedious to connect to other servers,
-but it's not necessary for progressing.
+Facultatif : Créer AutoLink.exe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sur la page :code:`Create Programs`, vous remarquerez un autre programme que vous pouvez créer
+appelé :code:`AutoLink.exe`. Si cela ne vous dérange pas d'attendre encore 10 à 15 minutes, vous devriez
+allez-y et créez ce programme. Cela rend beaucoup moins fastidieux de se connecter à d'autres serveurs,
+mais ce n'est pas nécessaire pour progresser.
 
-Joining your first faction: CyberSec
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Shortly after you reached level 50 hacking, you should have received a message that
-said this::
+Rejoindre votre première faction : CyberSec
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Peu de temps après avoir atteint le niveau 50 de piratage, vous devriez avoir reçu un message qui
+A dit ceci::
 
-    Message received from unknown sender:
+    Message reçu d'un expéditeur inconnu :
 
-    We've been watching you. Your skills are very impressive. But you're wasting
-    your talents. If you join us, you can put your skills to good use and change
-    the world for the better. If you join us, we can unlock your full potential.
-    But first, you must pass our test. Find and hack our server using the Terminal.
+     Nous vous avons observé. Vos compétences sont très impressionnantes. Mais tu gaspilles
+     vos talents. Si vous nous rejoignez, vous pourrez mettre vos compétences à profit et changer
+     le monde pour le mieux. Si vous nous rejoignez, nous pouvons libérer votre plein potentiel.
+     Mais d'abord, vous devez réussir notre test. Trouvez et piratez notre serveur en utilisant le Terminal.
 
-    -CyberSec
+     -CyberSec
 
-    This message was saved as csec-test.msg onto your home computer.
+    Ce message a été enregistré sous csec-test.msg sur votre ordinateur personnel.
 
-If you didn't, or if you accidentally closed it, that's okay! Messages get saved onto
-your home computer. Enter the following |Terminal| commands to view the message::
+Si vous ne l'avez pas fait, ou si vous l'avez accidentellement fermé, ce n'est pas grave ! Les messages sont enregistrés sur
+votre ordinateur personnel. Entrez le |Terminal| suivant commandes pour afficher le message ::
  
     $ home
     $ cat csec-test.msg
 
-This message is part of the game's main "quest-line". It is a message from the
-|CyberSec faction| that is asking you to pass their test.
-Passing their test is simple, you just have to find their server and hack it through
-the |Terminal|. Their server is called :code:`CSEC`.
-To do this, we'll use the :ref:`scan_analyze_terminal_command`
-Terminal command, just like we did before::
+Ce message fait partie de la "ligne de quête" principale du jeu. C'est un message du
+|Faction CyberSec| qui vous demande de passer leur test.
+Passer leur test est simple, il vous suffit de trouver leur serveur et de le pirater
+la |Terminale|. Leur serveur s'appelle :code:`CSEC`.
+Pour ce faire, nous allons utiliser la :ref:`scan_analyze_terminal_command`
+Commande de terminal, comme nous l'avons fait auparavant ::
 
     $ home
     $ scan-analyze 2
 
-This will show you the network for all servers that are up to 2 "nodes" away from
-your home computer. Remember that the network is randomly generated so it'll look
-different for everyone. Here's the relevant part of my :code:`scan-analyze` results::
+Cela vous montrera le réseau pour tous les serveurs qui sont jusqu'à 2 "nœuds" de
+votre ordinateur personnel. N'oubliez pas que le réseau est généré aléatoirement, il aura donc l'air
+différent pour chacun. Voici la partie pertinente de mes résultats :code:`scan-analyze` results::
 
     >iron-gym
     --Root Access: NO, Required hacking skill: 100
@@ -637,62 +638,62 @@ different for everyone. Here's the relevant part of my :code:`scan-analyze` resu
     ------Number of open ports required to NUKE: 1
     ------RAM: 8
 
-This tells me that I can reach :code:`CSEC` by going through :code:`iron-gym`::
+Cela me dit que je peux atteindre :code:`CSEC` en passant par :code:`iron-gym`::
 
     $ connect iron-gym
     $ connect CSEC
 
 .. note::
 
-    If you created the :code:`AutoLink.exe` program earlier, then there is an easier
-    method of connecting to :code:`CSEC`. You'll notice that in the :code:`scan-analyze`
-    results, all of the server hostnames are white and underlined. You can simply
-    click one of the server hostnames in order to connect to it. So, simply click
+     Si vous avez créé le programme :code:`AutoLink.exe` plus tôt, il existe une méthode plus simple
+     méthode de connexion à :code:`CSEC`. Vous remarquerez que dans le :code:`scan-analyze`
+     résultats, tous les noms d'hôte du serveur sont blancs et soulignés. Vous pouvez simplement
+     cliquez sur l'un des noms d'hôte du serveur pour vous y connecter. Alors, cliquez simplement
     :code:`CSEC`!
 
 .. note::
 
-    Make sure you notice the required hacking skill for the :code:`CSEC` server.
-    This is a random value between 51 and 60. Although you receive the message
-    from CSEC once you hit 50 hacking, you cannot actually pass their test
-    until your hacking is high enough to install a backdoor on their server.
+     Assurez-vous de noter la compétence de piratage requise pour le serveur :code:`CSEC`.
+     Il s'agit d'une valeur aléatoire comprise entre 51 et 60. Bien que vous receviez le message
+     du CSTC une fois que vous atteignez 50 piratage, vous ne pouvez pas réellement passer leur test
+     jusqu'à ce que votre piratage soit suffisamment élevé pour installer une porte dérobée sur leur serveur.
 
-After you are connected to the :code:`CSEC` server, you can backdoor it. Note that this
-server requires one open port in order to gain root access. We can open the SSH port
-using the :code:`BruteSSH.exe` program we created earlier. In |Terminal|::
+Une fois que vous êtes connecté au serveur :code:`CSEC`, vous pouvez le déguiser. Notez que cela
+Le serveur nécessite un port ouvert pour obtenir un accès root. Nous pouvons ouvrir le port SSH
+en utilisant le programme :code:`BruteSSH.exe` que nous avons créé précédemment. Dans |Terminal| ::
 
     $ run BruteSSH.exe
     $ run NUKE.exe
     $ backdoor
 
-After you successfully install the backdoor, you should receive a faction
-invitation from |CyberSec| shortly afterwards. Accept it. If you accidentally
-reject the invitation, that's okay. Just go to the :code:`Factions` tab
-(|Keyboard shortcut| Alt + f) and you should see an option that lets you
-accept the invitation.
+Après avoir installé avec succès la porte dérobée, vous devriez recevoir une faction
+invitation de |CyberSec| peu de temps après. Accepte-le. Si vous accidentellement
+rejeter l'invitation, ça va. Allez simplement dans l'onglet :code:`Factions`
+(|Raccourci clavier| Alt + f) et vous devriez voir une option qui vous permet
+accepter l'invitation.
 
-Congrats! You just joined your first faction. Don't worry about doing anything
-with this faction yet, we can come back to it later.
+Félicitations! Vous venez de rejoindre votre première faction. Ne vous inquiétez pas de faire quoi que ce soit
+avec cette faction encore, nous pourrons y revenir plus tard.
 
-Using Additional Servers to Hack Joesguns
+Utiliser des serveurs supplémentaires pour pirater Joesguns
 -----------------------------------------
-Once you have the |BruteSSH| program, you will be able to gain root access
-to several additional servers. These servers have more RAM that you can use to
-run scripts. We'll use the RAM on these servers to run more scripts that target
+Une fois que vous avez le |BruteSSH| programme, vous pourrez obtenir un accès root
+à plusieurs serveurs supplémentaires. Ces serveurs ont plus de RAM que vous pouvez utiliser pour
+exécuter des scripts. Nous utiliserons la RAM de ces serveurs pour exécuter davantage de scripts ciblant
 :code:`joesguns`.
 
-Copying our Scripts
-^^^^^^^^^^^^^^^^^^^
-The server's we'll be using to run our scripts are:
+Copier nos scripts
+^^^^^^^^^^^^^^^^^^^^
+Les serveurs que nous utiliserons pour exécuter nos scripts sont :
 
 * :code:`neo-net`
 * :code:`zer0`
 * :code:`max-hardware`
 * :code:`iron-gym`
 
-All of these servers have 32GB of RAM. You can use the |Terminal| command
-:code:`scan-analyze 3` to see for yourself. To copy our hacking scripts onto these servers,
-go to |Terminal| and run::
+Tous ces serveurs disposent de 32 Go de RAM. Vous pouvez utiliser le |Terminal| commande
+:code:`scan-analyze 3` pour voir par vous-même. Pour copier nos scripts de piratage sur ces serveurs,
+aller à |Terminal| et lancer::
 
     $ home
     $ scp early-hack-template.js neo-net
@@ -700,144 +701,144 @@ go to |Terminal| and run::
     $ scp early-hack-template.js max-hardware
     $ scp early-hack-template.js iron-gym
 
-Since each of these servers has 32GB of RAM, we can run our hacking script with 12 threads
-on each server. By now, you should know how to connect to servers. So find and connect to
-each of the servers above using the :code:`scan-analyze 3` |Terminal| command. Then, use
-following |Terminal| command to run our hacking
-script with 12 threads::
+Étant donné que chacun de ces serveurs dispose de 32 Go de RAM, nous pouvons exécuter notre script de piratage avec 12 threads
+sur chaque serveur. À présent, vous devriez savoir comment vous connecter aux serveurs. Alors trouvez et connectez-vous à
+chacun des serveurs ci-dessus en utilisant le :code:`scan-analyze 3` |Terminal| commande. Ensuite, utilisez
+suivant |Terminal| commande pour exécuter notre piratage
+script avec 12 threads ::
 
     $ run early-hack-template.js -t 12
 
-Remember that if you have the |AutoLink| program, you can simply click on the hostname of a server
-after running :ref:`scan_analyze_terminal_command` to connect to it.
+Rappelez-vous que si vous avez le |AutoLink| programme, vous pouvez simplement cliquer sur le nom d'hôte d'un serveur
+après avoir exécuté :ref:`scan_analyze_terminal_command` pour s'y connecter.
 
-Profiting from Scripts & Gaining Reputation with CyberSec
----------------------------------------------------------
-Now it's time to play the waiting game. It will take some time for your scripts to start
-earning money. Remember that most of your scripts are targeting |joesguns|. It will take a
-bit for them to :js:func:`grow` and :js:func:`weaken` the server to the appropriate values
-before they start hacking it. Once they do, however, the scripts will be very profitable.
+Profiter des scripts et gagner en réputation avec CyberSec
+-------------------------------------------------- -------
+Il est maintenant temps de jouer au jeu de l'attente. Il faudra un certain temps pour que vos scripts démarrent
+Gagner de l'argent. N'oubliez pas que la plupart de vos scripts ciblent |joesguns|. Il faudra un
+bit pour qu'ils :js:func:`grow` et :js:func:`weaken` le serveur aux valeurs appropriées
+avant qu'ils ne commencent à le pirater. Une fois qu'ils le feront, cependant, les scripts seront très rentables.
 
 .. note::
 
-    For reference, in about two hours after starting my first script, my scripts had a
-    production rate of $20k per second and had earned a total of $70 million.
-    (You can see these stats on the :code:`Active Scripts` tab).
+     Pour référence, environ deux heures après avoir lancé mon premier script, mes scripts avaient un
+     taux de production de 20 000 $ par seconde et avait gagné un total de 70 millions de dollars.
+     (Vous pouvez voir ces statistiques dans l'onglet :code:`Active Scripts`).
 
-    After another 15 minutes, the production rate had increased to $25k per second
-    and the scripts had made an additional $55 million.
+     Après 15 minutes supplémentaires, le taux de production était passé à 25 000 $ par seconde.
+     et les scripts avaient rapporté 55 millions de dollars supplémentaires.
 
-    Your results will vary based on how fast you earned money from crime/working/hacknet nodes,
-    but this will hopefully give you a good indication of how much the scripts can earn.
+     Vos résultats varieront en fonction de la rapidité avec laquelle vous avez gagné de l'argent grâce aux nœuds criminels / de travail / de piratage,
+     mais cela vous donnera, espérons-le, une bonne indication de ce que les scripts peuvent rapporter.
 
-In the meantime, we are going to be gaining reputation with the |CyberSec faction|.
-Go to the |Factions tab| on the left-hand
-navigation menu, and from there select |CyberSec|. In the middle of
-the page there should be a button for :code:`Hacking Contracts`.
-Click it to start earning reputation for the |CyberSec| faction (as well
-as some hacking experience). The higher your hacking level, the more reputation you
-will gain. Note that while you are working for a faction, you can choose to not interact
-with the rest of the game in any way to gain reputation at full speed. You can also select to
-do something else simultaneously, gaining reputation a bit more slowly, until you focus again.
-You can cancel your faction work at any time with no penalty to your reputation gained so far.
+En attendant, nous allons gagner en notoriété auprès de la |faction CyberSec|.
+Allez dans l'onglet |Factions| à gauche
+menu de navigation, puis sélectionnez |CyberSec|. Au milieu de
+la page, il devrait y avoir un bouton pour :code:`Hacking Contracts`.
+Cliquez dessus pour commencer à gagner de la réputation pour le |CyberSec| faction (ainsi
+comme une expérience de piratage). Plus votre niveau de piratage est élevé, plus vous avez de réputation
+va gagner. Notez que lorsque vous travaillez pour une faction, vous pouvez choisir de ne pas interagir
+avec le reste du jeu de quelque manière que ce soit gagner en notoriété à toute allure. Vous pouvez également choisir de
+faites autre chose simultanément, gagnez en réputation un peu plus lentement, jusqu'à ce que vous vous concentriez à nouveau.
+Vous pouvez annuler votre travail de faction à tout moment sans pénaliser votre réputation acquise jusqu'à présent.
 
-Purchasing Upgrades and Augmentations
+Achat de mises à niveau et d'augmentations
 -------------------------------------
-As I mentioned before, within 1-2 hours I had earned over $200 million. Now, it's time
-to spend all of this money on some persistent upgrades to help progress!
+Comme je l'ai déjà mentionné, en 1 à 2 heures, j'avais gagné plus de 200 millions de dollars. Maintenant, il est temps
+dépenser tout cet argent dans des améliorations persistantes pour aider à progresser !
 
-Upgrading RAM on Home computer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The most important thing to upgrade right now is the RAM on your home computer. This
-will allow you to run more scripts.
+Mise à niveau de la RAM sur l'ordinateur personnel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La chose la plus importante à mettre à niveau en ce moment est la RAM de votre ordinateur personnel. Cette
+vous permettra d'exécuter plus de scripts.
 
-To upgrade your RAM, go to the |City tab| and visit the company |Alpha Enterprises|.
-There will be an option that says :code:`Purchase additional RAM for Home Computer`.
-Click it and follow the dialog box to upgrade your RAM.
+Pour mettre à jour votre RAM, allez dans l'onglet |Ville| et visitez l'entreprise |Alpha Enterprises|.
+Il y aura une option indiquant :code:`Acheter de la RAM supplémentaire pour l'ordinateur personnel`.
+Cliquez dessus et suivez la boîte de dialogue pour mettre à niveau votre RAM.
 
-I recommend getting your home computer's RAM to *at least* 128GB. Getting it even
-higher would be better.
+Je recommande d'obtenir la RAM de votre ordinateur personnel à *au moins* 128 Go. Obtenir même
+plus haut serait mieux.
 
-Purchasing your First Augmentations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Once you get ~1000 reputation with the |CyberSec faction|, you can purchase
-your first :ref:`Augmentation <gameplay_augmentations>` from them.
+Acheter vos premières augmentations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Une fois que vous avez atteint ~1000 points de réputation auprès de la |faction CyberSec|, vous pouvez acheter
+votre première :ref:`Augmentation <gameplay_augmentations>` d'eux.
 
-To do this, go to the |Factions tab| on the left-hand navigation menu
-(|Keyboard shortcut| Alt + f) and select |CyberSec|. There is an button
-near the bottom that says :code:`Purchase Augmentations`. This will bring up a
-page that displays all of the Augmentations available from |CyberSec|. Some of them
-may be locked right now. To unlock these, you will need to earn more
-reputation with |CyberSec|.
+Pour cela, rendez-vous dans l'onglet |Factions| dans le menu de navigation de gauche
+(|Raccourci clavier| Alt + f) et sélectionnez |CyberSec|. Il y a un bouton
+près du bas qui dit :code:`Purchase Augmentations`. Cela fera apparaître un
+page qui affiche toutes les augmentations disponibles à partir de |CyberSec|. Certains d'entre eux
+peut être verrouillé en ce moment. Pour les débloquer, vous devrez gagner plus
+réputation auprès de |CyberSec|.
 
-Augmentations give persistent upgrades in the form of multipliers. These aren't very
-powerful early in the game because the multipliers are small. However, the effects
-of Augmentations stack multiplicatively **with each other**, so as you continue to install
-many Augmentations their effects will increase significantly.
+Les augmentations donnent des améliorations persistantes sous la forme de multiplicateurs. Ce ne sont pas très
+puissant en début de partie car les multiplicateurs sont petits. Cependant, les effets
+des augmentations s'empilent de manière multiplicative ** les unes avec les autres **, de sorte que vous continuez à installer
+de nombreuses augmentations leurs effets augmenteront considérablement.
 
-Because of this, I would recommend investing more in RAM upgrades for your home computer rather
-than Augmentations early on. Having enough RAM to run many scripts will allow you to make
-much more money, and then you can come back later on and get all these Augmentations.
+Pour cette raison, je recommanderais d'investir davantage dans des mises à niveau de RAM pour votre ordinateur personnel plutôt que
+que les augmentations au début. Avoir suffisamment de RAM pour exécuter de nombreux scripts vous permettra de faire
+beaucoup plus d'argent, et vous pourrez revenir plus tard et obtenir toutes ces augmentations.
 
-Right now, I suggest purchasing at the very least the :code:`Neurotrainer I` Augmentation from
-|CyberSec|. If you have the money to spare, I would also suggest getting :code:`BitWire` and
-several levels of the :code:`NeuroFlux Governor` (:code:`NFG`) Augmentations. Note that each time
-you purchase an Augmentation,
-:ref:`the price of purchasing another increases by 90% <gameplay_augmentations_purchasingmultiple>`,
-so make sure you buy the most expensive Augmentation first. Don't worry, once you choose to
-install Augmentations, their prices will reset back to their original values.
+En ce moment, je suggère d'acheter au moins le :code:`Neurotrainer I` Augmentation de
+|CyberSec|. Si vous avez de l'argent à dépenser, je suggérerais également d'obtenir :code:`BitWire` et
+plusieurs niveaux des augmentations :code:`NeuroFlux Governor` (:code:`NFG`). A noter qu'à chaque fois
+vous achetez une augmentation,
+:ref:`le prix d'achat d'un autre augmente de 90 % <gameplay_augmentations_purchasingmultiple>`,
+alors assurez-vous d'acheter d'abord l'augmentation la plus chère. Ne vous inquiétez pas, une fois que vous avez choisi de
+installez des augmentations, leurs prix seront réinitialisés à leurs valeurs d'origine.
 
-Next Steps
+Prochaines étapes
 ----------
-That's the end of the walkthrough portion of this guide! You should continue to explore
-what the game has to offer. There's quite a few features that aren't covered or mentioned
-in this guide, and even more that get unlocked as you continue to play!
+C'est la fin de la partie pas à pas de ce guide ! Vous devriez continuer à explorer
+ce que le jeu a à offrir. Il y a pas mal de fonctionnalités qui ne sont pas couvertes ou mentionnées
+dans ce guide, et encore plus qui se déverrouillent au fur et à mesure que vous continuez à jouer !
 
-Also, check out the :ref:`netscript` documentation to see what it has to offer. Writing
-scripts to perform and automate various tasks is where most of the fun in the game comes
-from (in my opinion)!
+Consultez également la documentation :ref:`netscript` pour voir ce qu'elle a à offrir. En train d'écrire
+les scripts pour effectuer et automatiser diverses tâches sont l'endroit où le plus de plaisir dans le jeu vient
+de (à mon avis)!
 
-The following are a few things you may want to consider doing in the near future.
+Voici quelques choses que vous voudrez peut-être envisager de faire dans un proche avenir.
 
-Installing Augmentations (and Resetting)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you've purchased any :ref:`gameplay_augmentations`, you'll need to install them before you
-actually gain their effects. Installing Augmentations is the game's "soft-reset" or "prestige"
-mechanic. You can :ref:`read more details about it here <gameplay_augmentations_installing>`.
+Installation d'augmentations (et réinitialisation)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Si vous avez acheté des :ref:`gameplay_augmentations`, vous devrez les installer avant de
+obtiennent réellement leurs effets. L'installation d'Augmentations est la "réinitialisation logicielle" ou le "prestige" du jeu.
+mécanicien. Vous pouvez :ref:`lire plus de détails à ce sujet ici <gameplay_augmentations_installing>`.
 
-To install your Augmentations, click the |Augmentations tab| on the left-hand navigation
-menu (|Keyboard shortcut| Alt + a). You will see a list of all of the Augmentations
-you have purchased. Below that, you will see a button that says :code:`Install Augmentations`.
-Be warned, after clicking this there is no way to undo it (unless you load an earlier save).
+Pour installer vos augmentations, cliquez sur l'onglet |Augmentations| sur la navigation de gauche
+menu (|raccourci clavier| Alt + a). Vous verrez une liste de toutes les augmentations
+vous avez acheté. En dessous, vous verrez un bouton indiquant :code:`Install Augmentations`.
+Soyez averti, après avoir cliqué dessus, il n'y a aucun moyen de l'annuler (sauf si vous chargez une sauvegarde antérieure).
 
-Automating the Script Startup Process
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Whenever you install Augmentations, all of your scripts are killed and you'll have to
-re-run them. Doing this every time you install Augmentations would be very tedious and annoying,
-so you should write a script to automate the process. Here's a simple example for a
-startup script. Feel free to adjust it to your liking.
+Automatisation du processus de démarrage du script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Chaque fois que vous installez Augmentations, tous vos scripts sont tués et vous devrez
+les relancer. Faire cela à chaque fois que vous installez Augmentations serait très fastidieux et ennuyeux,
+vous devez donc écrire un script pour automatiser le processus. Voici un exemple simple pour un
+script de démarrage. N'hésitez pas à l'ajuster à votre guise.
 
 .. code:: javascript
     /** @param {NS} ns */
     export async function main(ns) {
-        // Array of all servers that don't need any ports opened
-        // to gain root access. These have 16 GB of RAM
+         // Tableau de tous les serveurs qui n'ont besoin d'aucun port ouvert
+         // pour obtenir un accès root. Ceux-ci ont 16 Go de RAM
         const servers0Port = ["sigma-cosmetics",
                             "joesguns",
                             "nectar-net",
                             "hong-fang-tea",
                             "harakiri-sushi"];
 
-        // Array of all servers that only need 1 port opened
-        // to gain root access. These have 32 GB of RAM
+        // Tableau de tous les serveurs qui n'ont besoin que d'un seul port ouvert
+         // pour gagner un accès administrateur. Ceux-ci ont 32 Go de RAM
         const servers1Port = ["neo-net",
                             "zer0",
                             "max-hardware",
                             "iron-gym"];
 
-        // Copy our scripts onto each server that requires 0 ports
-        // to gain root access. Then use nuke() to gain admin access and
-        // run the scripts.
+         // Copiez nos scripts sur chaque serveur nécessitant 0 port
+         // pour obtenir un accès root. Utilisez ensuite nuke() pour obtenir un accès administrateur et
+         // exécute les scripts.
         for (let i = 0; i < servers0Port.length; ++i) {
             const serv = servers0Port[i];
 
@@ -846,14 +847,14 @@ startup script. Feel free to adjust it to your liking.
             ns.exec("early-hack-template.script", serv, 6);
         }
 
-        // Wait until we acquire the "BruteSSH.exe" program
+        // Attendre que nous acquérions le programme "BruteSSH.exe"
         while (!ns.fileExists("BruteSSH.exe")) {
             await ns.sleep(60000);
         }
 
-        // Copy our scripts onto each server that requires 1 port
-        // to gain root access. Then use brutessh() and nuke()
-        // to gain admin access and run the scripts.
+         // Copiez nos scripts sur chaque serveur nécessitant 1 port
+         // pour obtenir un accès root. Ensuite, utilisez brutessh() et nuke()
+         // pour obtenir un accès administrateur et exécuter les scripts.
         for (let i = 0; i < servers1Port.length; ++i) {
             const serv = servers1Port[i];
 
@@ -863,25 +864,25 @@ startup script. Feel free to adjust it to your liking.
             ns.exec("early-hack-template.script", serv, 12);
         }
     }
-Random Tips
+Conseils divers
 -----------
-* Early on in the game, it's better to spend your money on upgrading RAM and purchasing
-  new servers rather than spending it on Augmentations
-* The more money available on a server, the more effective the :js:func:`hack` and
-  :js:func:`grow` Netscript functions will be. This is because both of these functions
-  use percentages rather than flat values. :js:func:`hack` steals a percentage of a server's
-  total available money, and :js:func:`grow` increases a server's money by X%.
-* There is a limit to how much money can exist on a server. This value is different for each
-  server. The :js:func:`getServerMaxMoney` function will tell you this maximum value.
-* At this stage in the game, your combat stats (strength, defense, etc.) are not nearly
-  as useful as your hacking stat. Do not invest too much time or money into gaining combat
-  stat exp.
-* As a rule of thumb, your hacking target should be the server with highest max money that's
-  required hacking level is under 1/2 of your hacking level. 
+* Au début du jeu, il est préférable de dépenser votre argent pour mettre à niveau la RAM et acheter
+   de nouveaux serveurs plutôt que de le dépenser en augmentations
+* Plus il y a d'argent disponible sur un serveur, plus le :js:func:`hack` et
+   :js:func:`grow` Les fonctions Netscript le seront. C'est parce que ces deux fonctions
+   utiliser des pourcentages plutôt que des valeurs fixes. :js:func:`hack` vole un pourcentage du serveur
+   total de l'argent disponible, et :js:func:`grow` augmente l'argent d'un serveur de X %.
+* Il y a une limite à combien d'argent peut exister sur un serveur. Cette valeur est différente pour chaque
+   serveur. La fonction :js:func:`getServerMaxMoney` vous indiquera cette valeur maximale.
+* A ce stade du jeu, vos statistiques de combat (force, défense, etc.)
+   aussi utile que vos statistiques de piratage. N'investissez pas trop de temps ou d'argent pour gagner le combat
+   exp.stat.
+* En règle générale, votre cible de piratage devrait être le serveur avec l'argent maximum le plus élevé
+   le niveau de piratage requis est inférieur à la moitié de votre niveau de piratage.
 
 
 
-.. Substitution definitions
+.. Définitions de substitution
 .. |Alpha Enterprises|      replace:: :code:`Alpha Enterprises`
 .. |Augmentations tab|      replace:: :code:`Augmentations` tab
 .. |AutoLink|               replace:: :code:`AutoLink.exe`
