@@ -15,8 +15,8 @@ Notez que ce guide est conçu pour ceux qui ont une expérience minimale en prog
 Introduction
 ------------
 Bitburner est un RPG incrémental sur le thème du cyberpunk. Le joueur progresse en levant
-leurs :ref:`gameplay_stats`, gagner de l'argent et :ref:`gravir les échelons de l'entreprise
-    `.
+leurs :ref:`gameplay_stats`, gagner de l'argent et :ref:`climbing the corporate ladder <gameplay_companies>`.
+
 Finalement, après avoir atteint certains critères, le joueur commencera à recevoir des invitations
 de :ref:`gameplay_factions`. Rejoindre ces factions et travailler pour elles débloquera
 :ref:`gameplay_augmentations`. L'achat et l'installation d'Augmentations fournissent des
