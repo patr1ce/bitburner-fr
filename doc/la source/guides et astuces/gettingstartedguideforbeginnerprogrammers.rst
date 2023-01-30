@@ -166,100 +166,100 @@ nécessaire pour le piratage. Voir :ref:`here for more details <gameplay_hacking
 
     while (true) {
         if (ns.getServerSecurityLevel(target) > securityThresh) {
-            // If the server's security level is above our threshold, weaken it
+            // Si le niveau de sécurité du serveur est supérieur à notre seuil, affaiblissez-le
             await ns.weaken(target);
         } else if (ns.getServerMoneyAvailable(target) < moneyThresh) {
-            // Otherwise, if the server's money is less than our threshold, grow it
+            // Sinon, si l'argent du serveur est inférieur à notre seuil, augmentez-le
             await ns.grow(target);
         } else {
-            // Otherwise, hack it
+            // Sinon, piratez-le
             await ns.hack(target);
         }
     }
 
-This is the main section that drives our script. It dictates the script's logic
-and carries out the hacking operations. The `while (true)` creates an infinite loop
-that will continuously run the hacking logic until the the script is killed.
+C'est la section principale qui pilote notre script. Il dicte la logique du script
+et effectue les opérations de piratage. Le `while (true)` crée une boucle infinie
+qui exécutera en continu la logique de piratage jusqu'à ce que le script soit tué.
 
-The await keyword is needed for `hack` / `grow` / `weaken` because these commands take 
-time to execute, unlike the others. If you forget to await these commands, you will get 
-an exception saying you tried to do multiple things at once, because your code will 
-immediately finish the function call without waiting for the operation to be done. Also 
-important is that await can only be used in functions marked async (which main() is).
+Le mot clé await est nécessaire pour `hack` / `grow` / `weaken` car ces commandes prennent
+temps d'exécution, contrairement aux autres. Si vous oubliez d'attendre ces commandes, vous obtiendrez
+une exception indiquant que vous avez essayé de faire plusieurs choses à la fois, car votre code sera
+terminer immédiatement l'appel de la fonction sans attendre que l'opération soit effectuée. Également
+l'important est que await ne peut être utilisé que dans les fonctions marquées async (ce qui est main()).
 
-Running our Scripts
+Exécution de nos scripts
 -------------------
-Now we want to start running our hacking script so that it can start earning us
-money and experience. Our home computer only has 8GB of RAM and we'll be using it for
-something else later. So instead, we'll take advantage of the RAM on other machines.
+Maintenant, nous voulons commencer à exécuter notre script de piratage afin qu'il puisse commencer à nous rapporter
+l'argent et l'expérience. Notre ordinateur personnel n'a que 8 Go de RAM et nous l'utiliserons pour
+autre chose plus tard. Donc, à la place, nous profiterons de la RAM sur d'autres machines.
 
-Go to |Terminal| and enter the following command::
+Allez à |Terminal| et entrez la commande suivante ::
 
     $ scan-analyze 2
 
-This will show detailed information about some servers on the network. The
-**network is randomized so it will be different for every person**.
-Here's what mine showed at the time I made this::
+Cela affichera des informations détaillées sur certains serveurs du réseau. Les
+**le réseau est aléatoire, il sera donc différent pour chaque personne**.
+Voici ce que le mien a montré au moment où j'ai fait ceci ::
 
     [home ~]> scan-analyze 2
-    ~~~~~~~~~~ Beginning scan-analyze ~~~~~~~~~~
+   ~~~~~~~~~~ Début du scan-analyse ~~~~~~~~~~
 
     n00dles
-    --Root Access: YES, Required hacking skill: 1
-    --Number of open ports required to NUKE: 0
-    --RAM: 4.00GB
+    --Accès racine : OUI, compétence de piratage requise : 1
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 4,00 Go
 
-    ----zer0
-    ------Root Access: NO, Required hacking skill: 75
-    ------Number of open ports required to NUKE: 1
-    ------RAM: 32.00GB
+    ----zéro0
+    ------Accès racine : NON, compétence de piratage requise : 75
+    ------Nombre de ports ouverts requis pour NUKE : 1
+    ------ RAM : 32,00 Go
 
-    foodnstuff
-    --Root Access: NO, Required hacking skill: 1
-    --Number of open ports required to NUKE: 0
-    --RAM: 16.00GB
+    denrées alimentaires
+    --Accès racine : NON, compétence de piratage requise : 1
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 16,00 Go
 
     sigma-cosmetics
-    --Root Access: NO, Required hacking skill: 5
-    --Number of open ports required to NUKE: 0
-    --RAM: 16.00GB
+    --Accès racine : NON, compétence de piratage requise : 5
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 16,00 Go
 
     joesguns
-    --Root Access: NO, Required hacking skill: 10
-    --Number of open ports required to NUKE: 0
-    --RAM: 16.00GB
+    --Accès racine : NON, compétence de piratage requise : 10
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 16,00 Go
 
-    ----max-hardware
-    ------Root Access: NO, Required hacking skill: 80
-    ------Number of open ports required to NUKE: 1
-    ------RAM: 32.00GB
+    ----matériel max
+    ------Accès racine : NON, compétence de piratage requise : 80
+    ------Nombre de ports ouverts requis pour NUKE : 1
+    ------ RAM : 32,00 Go
 
-    ----CSEC
-    ------Root Access: NO, Required hacking skill: 54
-    ------Number of open ports required to NUKE: 1
-    ------RAM: 8.00GB
+    ----CSTC
+    ------Accès racine : NON, compétence de piratage requise : 54
+    ------Nombre de ports ouverts requis pour NUKE : 1
+    ------ RAM : 8,00 Go
 
     hong-fang-tea
-    --Root Access: NO, Required hacking skill: 30
-    --Number of open ports required to NUKE: 0
-    --RAM: 16.00GB
+    --Accès racine : NON, compétence de piratage requise : 30
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 16,00 Go
 
     ----nectar-net
-    ------Root Access: NO, Required hacking skill: 20
-    ------Number of open ports required to NUKE: 0
-    ------RAM: 16.00GB
+    ------Accès racine : NON, compétence de piratage requise : 20
+    ------Nombre de ports ouverts requis pour NUKE : 0
+    ------ RAM : 16,00 Go
 
     harakiri-sushi
-    --Root Access: NO, Required hacking skill: 40
-    --Number of open ports required to NUKE: 0
-    --RAM: 16.00GB
+    --Accès racine : NON, compétence de piratage requise : 40
+    --Nombre de ports ouverts requis pour NUKE : 0
+    --RAM : 16,00 Go
 
-    iron-gym
-    --Root Access: NO, Required hacking skill: 100
-    --Number of open ports required to NUKE: 1
-    --RAM: 32.00GB
+    fer-gym
+    --Accès racine : NON, compétence de piratage requise : 100
+    --Nombre de ports ouverts requis pour NUKE : 1
+    --RAM : 32,00 Go
 
-Take note of the following servers:
+Prenez note des serveurs suivants :
 
 * |sigma-cosmetics|
 * |joesguns|
@@ -267,28 +267,28 @@ Take note of the following servers:
 * |hong-fang-tea|
 * |harakiri-sushi|
 
-All of these servers have 16GB of RAM. Furthermore, all of these servers do not require
-any open ports in order to NUKE. In other words, we can gain root access to all of these
-servers and then run scripts on them.
+Tous ces serveurs disposent de 16 Go de RAM. De plus, tous ces serveurs ne nécessitent pas
+tous les ports ouverts afin de NUKE. En d'autres termes, nous pouvons obtenir un accès root à tous ces
+serveurs, puis exécutez des scripts dessus.
 
-First, let's determine how many threads of our hacking script we can run.
+Tout d'abord, déterminons combien de threads de notre script de piratage nous pouvons exécuter.
 :ref:`Read more about multithreading scripts here <gameplay_scripts_multithreadingscripts>`
-The script we wrote
-uses 2.6GB of RAM. You can check this using the following |Terminal| command::
+Le scénario que nous avons écrit
+utilise 2,6 Go de RAM. Vous pouvez vérifier cela en utilisant la commande suivante du |Terminal| ::
 
     $ mem early-hack-template.js
 
-This means we can run 6 threads on a 16GB server. Now, to run our scripts on all of these
-servers, we have to do the following:
+Cela signifie que nous pouvons exécuter 6 threads sur un serveur de 16 Go. Maintenant, pour exécuter nos scripts sur tous ces
+serveurs, nous devons faire ce qui suit :
 
-1. Use the :ref:`scp_terminal_command` |Terminal| command to copy our script to each server.
-2. Use the :ref:`connect_terminal_command` |Terminal| command to connect to a server.
-3. Use the :ref:`run_terminal_command` |Terminal| command to run the `NUKE.exe` program and
-   gain root access.
-4. Use the :ref:`run_terminal_command` |Terminal| command again to run our script.
-5. Repeat steps 2-4 for each server.
+1. Utilisez la :ref:`scp_terminal_command` |Terminal| commande pour copier notre script sur chaque serveur.
+2. Utilisez la :ref:`commande_connect_terminal` |Terminal| commande pour se connecter à un serveur.
+3. Utilisez la commande :ref:`run_terminal_command` |Terminal| commande pour exécuter le programme `NUKE.exe` et
+   obtenir un accès root.
+4. Utilisez la commande :ref:`run_terminal_command` |Terminal| commande à nouveau pour exécuter notre script.
+5. Répétez les étapes 2 à 4 pour chaque serveur.
 
-Here's the sequence of |Terminal| commands I used in order to achieve this::
+Voici la séquence de |Terminal| commandes que j'ai utilisées pour y parvenir ::
 
     $ home
     $ scp early-hack-template.js n00dles
@@ -324,44 +324,46 @@ Here's the sequence of |Terminal| commands I used in order to achieve this::
 
 .. note::
 
-    Pressing the :code:`Tab` key in the middle of a Terminal command will attempt to
-    auto-complete the command. For example, if you type in :code:`scp ea` and then
-    hit :code:`Tab`, the rest of the script's name should automatically be filled in.
-    This works for most commands in the game!
+    Appuyer sur la touche :code:`Tab` au milieu d'une commande Terminal tentera de
+    compléter automatiquement la commande. Par exemple, si vous tapez :code:`scp ea` puis
+    appuyez sur :code:`Tab`, le reste du nom du script devrait être automatiquement rempli.
+    Cela fonctionne pour la plupart des commandes du jeu !
 
-The :ref:`home_terminal_command` |Terminal| command is used to connect to the home
-computer. When running our scripts with the :code:`run early-hack-template.js -t 6`
-command, the :code:`-t 6` specifies that the script should be run with 6 threads.
+La :ref:`home_terminal_command` |Terminal| la commande est utilisée pour se connecter à la maison
+l'ordinateur. Lors de l'exécution de nos scripts avec le :code:`run early-hack-template.js -t 6`
+commande, le :code:`-t 6` spécifie que le script doit être exécuté avec 6 threads.
 
-Note that the |nectar-net| server isn't in the home computer's immediate network.
-This means you can't directly connect to it from home. You will have to search for it
-inside the network. The results of the `scan-analyze 2` command we ran before
-will show where it is. In my case, I could connect to it by going from
-`hong-fang-tea -> nectar-net`. However, this will probably be different for you.
+otez que le |nectar-net| serveur n'est pas dans le réseau immédiat de l'ordinateur domestique.
+Cela signifie que vous ne pouvez pas vous y connecter directement depuis votre domicile. il va falloir le chercher
+à l'intérieur du réseau. Les résultats de la commande `scan-analyze 2` que nous avons exécutée auparavant
+montrera où il se trouve. Dans mon cas, j'ai pu m'y connecter en passant de
+`hong-fang-tea -> nectar-net'. Cependant, ce sera probablement différent pour vous.
 
-After running all of these |Terminal| commands, our scripts are now up and running.
-These will earn money and hacking experience over time. These gains will be
-really slow right now, but they will increase once our hacking skill rises and
-we start running more scripts.
+Après avoir exécuté tous ces |Terminal| commandes, nos scripts sont maintenant opérationnels.
+Ceux-ci gagneront de l'argent et de l'expérience de piratage au fil du temps. Ces gains seront
+vraiment lents en ce moment, mais ils augmenteront une fois que nos compétences de piratage augmenteront et
+nous commençons à exécuter plus de scripts.
 
-Increasing Hacking Level
+Augmentation du niveau de piratage
 ------------------------
-There are many servers besides |n00dles| that can be hacked, but they have
-higher required hacking levels. Therefore, we should raise our hacking level. Not only
-will this let us hack more servers, but it will also increase the effectiveness of our hacking
-against |n00dles|.
+Il existe de nombreux serveurs en plus de |n00dles| qui peut être piraté, mais ils ont
+niveaux de piratage requis plus élevés. Par conséquent, nous devrions augmenter notre niveau de piratage. Pas seulement
+cela nous permettra de pirater plus de serveurs, mais cela augmentera également l'efficacité de notre piratage
+contre |n00dles|.
 
-The easiest way to train your hacking level is to visit Rothman University. You can do this by
-clicking the `City` tab on the left-hand navigation menu, or you can use the
-:ref:`keyboard shortcut <shortcuts>` Alt + w. Rothman University should be one of the buttons
-near the top. Click the button to go to the location.
+Le moyen le plus simple de former votre niveau de piratage est de visiter l'Université Rothman. Vous pouvez le faire en
+en cliquant sur l'onglet "Ville" dans le menu de navigation de gauche, ou vous pouvez utiliser le
+:ref:`raccourci clavier
+      
+       ` Alt + w. L'Université Rothman devrait être l'un des boutons
+près du sommet. Cliquez sur le bouton pour accéder à l'emplacement.
 
-Once you go to Rothman University, you should see a screen with several options. These
-options describe different courses you can take. You should click the first button, which
-says: "Study Computer Science (free)".
+Une fois que vous êtes allé à l'Université Rothman, vous devriez voir un écran avec plusieurs options. Celles-ci
+les options décrivent les différents cours que vous pouvez suivre. Vous devez cliquer sur le premier bouton, qui
+dit: "Etudier l'informatique (gratuit)".
 
-After you click the button, you will start studying and earning hacking experience. While you
-are doing this, you cannot interact with any other part of the game until you click the button
+Après avoir cliqué sur le bouton, vous commencerez à étudier et à acquérir de l'expérience de piratage. Pendant que tu
+faites cela, vous ne pouvez interagir avec aucune autre partie du jeu tant que vous n'avez pas cliqué sur le bouton
 that says "Stop taking course".
 
 Right now, we want a hacking level of 10. You need approximately 174 hacking experience to reach
