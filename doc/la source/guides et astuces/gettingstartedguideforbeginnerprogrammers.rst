@@ -601,7 +601,7 @@ said this::
 
 If you didn't, or if you accidentally closed it, that's okay! Messages get saved onto
 your home computer. Enter the following |Terminal| commands to view the message::
-
+ 
     $ home
     $ cat csec-test.msg
 
