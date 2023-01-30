@@ -1,54 +1,55 @@
-Getting Started Guide for Beginner Programmers
+Guide de démarrage pour les programmeurs débutants
 ==============================================
 
-.. note:: Note that the scripts and strategies given in this guide aren't necessarily
-          optimal. They're just meant to introduce you to the game and help you get
-          started.
+.. note :: Notez que les scripts et les stratégies donnés dans ce guide ne sont pas nécessairement
+          optimale. Ils sont juste destinés à vous présenter le jeu et à vous aider à obtenir
+          a débuté.
 
-This is an introductory guide to getting started with Bitburner. It is not meant to be a
-comprehensive guide for the entire game, only the early stages. If you are confused
-or overwhelmed by the game, especially the programming and scripting aspects, this
-guide is perfect for you!
+Il s'agit d'un guide d'introduction pour démarrer avec Bitburner. Ce n'est pas censé être un
+guide complet pour l'ensemble du jeu, seulement les premières étapes. Si vous êtes confus
+ou dépassé par le jeu, notamment les aspects programmation et scénarisation, cela
+guide est parfait pour vous!
 
-Note that this guide is tailored towards those with minimal programming experience.
+Notez que ce guide est conçu pour ceux qui ont une expérience minimale en programmation.
 
 Introduction
 ------------
-Bitburner is a cyberpunk-themed incremental RPG. The player progresses by raising
-their :ref:`gameplay_stats`, earning money, and :ref:`climbing the corporate ladder <gameplay_companies>`.
-Eventually, after reaching certain criteria, the player will begin receiving invitations
-from :ref:`gameplay_factions`. Joining these factions and working for them will unlock
-:ref:`gameplay_augmentations`. Purchasing and installing Augmentations provide persistent
-upgrades and are necessary for progressing in the game.
+Bitburner est un RPG incrémental sur le thème du cyberpunk. Le joueur progresse en levant
+leurs :ref:`gameplay_stats`, gagner de l'argent et :ref:`gravir les échelons de l'entreprise
+    `.
+Finalement, après avoir atteint certains critères, le joueur commencera à recevoir des invitations
+de :ref:`gameplay_factions`. Rejoindre ces factions et travailler pour elles débloquera
+:ref:`gameplay_augmentations`. L'achat et l'installation d'Augmentations fournissent des
+améliorations et sont nécessaires pour progresser dans le jeu.
 
-The game has a minimal story/quest-line that can be followed to reach the end of the game.
-Since this guide is only about getting started with Bitburner, it will not cover the
-entire "quest-line".
+Le jeu a une histoire / quête minimale qui peut être suivie pour atteindre la fin du jeu.
+Étant donné que ce guide ne concerne que la prise en main de Bitburner, il ne couvrira pas le
+toute la "ligne de quête".
 
-First Steps
+Premiers pas
 -----------
-I'm going to assume you followed the introductory tutorial when you first began the game.
-In this introductory tutorial you created a script called :code:`n00dles.js` and ran it
-on the :code:`n00dles` server. Right now, we'll kill this script. There are two ways
-to do this:
+Je vais supposer que vous avez suivi le didacticiel d'introduction lorsque vous avez commencé le jeu.
+Dans ce tutoriel d'introduction, vous avez créé un script appelé :code:`n00dles.js` et l'avez exécuté
+sur le serveur :code:`n00dles`. Pour l'instant, nous allons tuer ce script. Il y a deux manières
+pour faire ça:
 
-1. You can go to the Terminal and enter::
+1. Vous pouvez vous rendre au Terminal et saisir ::
 
     $ kill n00dles.script
 
-2. You can go to the :code:`Active Scripts` page (|Keyboard shortcut| Alt + s) and
-   press the "Kill Script" button for :code:`n00dles.js`.
+2. Vous pouvez aller sur la page :code:`Active Scripts` (|raccourci clavier| Alt + s) et
+   appuyez sur le bouton "Kill Script" pour :code:`n00dles.js`.
 
-If you skipped the introductory tutorial, then ignore the part above. Instead, go to the
-:code:`Hacknet Nodes` page (|Keyboard shortcut| Alt + h) and purchase a
-Hacknet Node to start generating some passive income.
+Si vous avez ignoré le didacticiel d'introduction, ignorez la partie ci-dessus. Allez plutôt au
+:code:`Hacknet Nodes` (|raccourci clavier| Alt + h) et achetez un
+Hacknet Node pour commencer à générer des revenus passifs.
 
-Creating our First Script
--------------------------
-Now, we'll create a generic hacking script that can be used early on in the game (or throughout the
-entire game, if you want).
+Création de notre premier scénario
+------------------------
+Maintenant, nous allons créer un script de piratage générique qui peut être utilisé au début du jeu (ou tout au long du
+jeu entier, si vous voulez).
 
-Before we write the script, here are some things you'll want to familiarize yourself with:
+Avant d'écrire le script, voici quelques éléments avec lesquels vous voudrez vous familiariser :
 
 * :ref:`gameplay_hacking_generalhackingmechanics`
 * :ref:`gameplay_hacking_serversecurity`
@@ -58,97 +59,97 @@ Before we write the script, here are some things you'll want to familiarize your
 * :js:func:`brutessh`
 * :js:func:`nuke`
 
-To briefly summarize the information from the links above: Each server has a
-security level that affects how difficult it is to hack. Each server also has a
-certain amount of money, as well as a maximum amount of money it can hold. Hacking a
-server steals a percentage of that server's money. The :js:func:`hack` Netscript function
-is used to hack a server. The :js:func:`grow` Netscript function is used to increase
-the amount of money available on a server. The :js:func:`weaken` Netscript function is
-used to decrease a server's security level.
+Pour résumer brièvement les informations des liens ci-dessus : Chaque serveur a un
+niveau de sécurité qui affecte la difficulté à pirater. Chaque serveur dispose également d'un
+certaine somme d'argent, ainsi qu'un montant maximum d'argent qu'il peut contenir. Pirater un
+le serveur vole un pourcentage de l'argent de ce serveur. La fonction Netscript :js:func:`hack`
+est utilisé pour pirater un serveur. La fonction Netscript :js:func:`grow` est utilisée pour augmenter
+la somme d'argent disponible sur un serveur. La fonction Netscript :js:func:`weaken` est
+utilisé pour diminuer le niveau de sécurité d'un serveur.
 
-Now let's move on to actually creating the script.
-Go to your home computer and then create a script called :code:`early-hack-template.js` by
-going to Terminal and entering the following two commands::
+Passons maintenant à la création du script.
+Allez sur votre ordinateur personnel, puis créez un script appelé :code:`early-hack-template.js` en
+allez dans Terminal et entrez les deux commandes suivantes ::
 
     $ home
     $ nano early-hack-template.js
 
-This will take you to the script editor, which you can use to code and create
-:ref:`gameplay_scripts`. It will be helpful to consult the :ref:`netscript` documentation.
-Specifically, you'll want to take a look at :ref:`netscriptfunctions`.
+Cela vous mènera à l'éditeur de script, que vous pouvez utiliser pour coder et créer
+:ref:`gameplay_scripts`. Il sera utile de consulter la documentation :ref:`netscript`.
+Plus précisément, vous voudrez jeter un œil à :ref:`netscriptfunctions`.
 
-Enter the following code in the script editor:
+Saisissez le code suivant dans l'éditeur de script :
 
 .. code:: javascript
     /** @param {NS} ns */
     export async function main(ns) {
-        // Defines the "target server", which is the server
-        // that we're going to hack. In this case, it's "n00dles"
+        // Définit le "serveur cible", qui est le serveur
+        // que nous allons pirater. Dans ce cas, c'est "n00dles"
         const target = "n00dles";
 
-        // Defines how much money a server should have before we hack it
-        // In this case, it is set to 75% of the server's max money
+        // Définit combien d'argent un serveur devrait avoir avant de le pirater
+        // Dans ce cas, il est fixé à 75 % de l'argent maximum du serveur
         const moneyThresh = ns.getServerMaxMoney(target) * 0.75;
 
-        // Defines the maximum security level the target server can
-        // have. If the target's security level is higher than this,
-        // we'll weaken it before doing anything else
+        // Définit le niveau de sécurité maximal que le serveur cible peut
+        // avoir. Si le niveau de sécurité de la cible est supérieur à cela,
+        // on va l'affaiblir avant de faire quoi que ce soit d'autre
         const securityThresh = ns.getServerMinSecurityLevel(target) + 5;
 
-        // If we have the BruteSSH.exe program, use it to open the SSH Port
-        // on the target server
+        / Si nous avons le programme BruteSSH.exe, utilisez-le pour ouvrir le port SSH
+        // sur le serveur cible
         if (ns.fileExists("BruteSSH.exe", "home")) {
             ns.brutessh(target);
         }
 
-        // Get root access to target server
+        // Obtient l'accès root au serveur cible
         ns.nuke(target);
 
-        // Infinite loop that continously hacks/grows/weakens the target server
+        // Boucle infinie qui hacke/développe/affaiblit continuellement le serveur cible
         while(true) {
             if (ns.getServerSecurityLevel(target) > securityThresh) {
-                // If the server's security level is above our threshold, weaken it
+               // Si le niveau de sécurité du serveur est supérieur à notre seuil, affaiblissez-le
                 await ns.weaken(target);
             } else if (ns.getServerMoneyAvailable(target) < moneyThresh) {
-                // If the server's money is less than our threshold, grow it
+                // Si l'argent du serveur est inférieur à notre seuil, augmentez-le
                 await ns.grow(target);
             } else {
-                // Otherwise, hack it
+                // Sinon, piratez-le
                 await ns.hack(target);
             }
         }
     }
-The script above contains comments that document what it does, but let's go through it
-step-by-step anyways.
+Le script ci-dessus contient des commentaires qui documentent ce qu'il fait, mais passons en revue
+étape par étape en tout cas.
 
 .. code:: javascript
 
     const target = "n00dles";
 
-This first command defines a string which contains our target server. That's the server
-that we're going to hack. For now, it's set to `n00dles` because that's the only
-server with a required hacking level of 1. If you want to hack a different server,
-simply change this
-variable to be the hostname of another server.
+Cette première commande définit une chaîne qui contient notre serveur cible. C'est le serveur
+que nous allons pirater. Pour l'instant, il est défini sur `n00dles` car c'est le seul
+serveur avec un niveau de piratage requis de 1. Si vous voulez pirater un autre serveur,
+change simplement ça
+variable pour être le nom d'hôte d'un autre serveur.
 
 .. code:: javascript
 
     const moneyThresh = ns.getServerMaxMoney(target) * 0.75;
 
-This second command defines a numerical value representing the minimum
-amount of money that must be available on the target server in order for our script
-to hack it. If the money available on the target server is less than this value,
-then our script will :js:func:`grow` the server rather than hacking it.
-It is set to 75% of the maximum amount of money that can be available on the server.
-The :js:func:`getServerMaxMoney` Netscript function is used to find this value
+Cette deuxième commande définit une valeur numérique représentant le minimum
+somme d'argent qui doit être disponible sur le serveur cible pour que notre script
+pour le pirater. Si l'argent disponible sur le serveur cible est inférieur à cette valeur,
+alors notre script :js:func:`développe` le serveur plutôt que de le pirater.
+Il est fixé à 75% du montant maximum d'argent pouvant être disponible sur le serveur.
+La fonction Netscript :js:func:`getServerMaxMoney` est utilisée pour trouver cette valeur
 
 .. code:: javascript
 
     const securityThresh = ns.getServerMinSecurityLevel(target) + 5;
 
-This third command defines a numerical value representing the maximum security level
-the target server can have. If the target server's security level is higher than
-this value, then our script will :js:func:`weaken` the script before doing anything else.
+Cette troisième commande définit une valeur numérique représentant le niveau de sécurité maximal
+le serveur cible peut avoir. Si le niveau de sécurité du serveur cible est supérieur à
+cette valeur, alors notre script va :js:func:`affaiblir` le script avant de faire quoi que ce soit d'autre.
 
 .. code:: javascript
 
@@ -158,8 +159,8 @@ this value, then our script will :js:func:`weaken` the script before doing anyth
 
     ns.nuke(target);
 
-This section of code is used to gain root access on the target server. This is
-necessary for hacking. See :ref:`here for more details <gameplay_hacking>`.
+Cette section de code est utilisée pour obtenir un accès root sur le serveur cible. C'est
+nécessaire pour le piratage. Voir :ref:`here for more details <gameplay_hacking>`.
 
 .. code:: javascript
 
