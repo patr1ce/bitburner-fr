@@ -51,7 +51,7 @@ module.exports = (env, argv) => {
     template: "src/index.html",
     favicon: "favicon.ico",
     googleAnalytics: {
-      trackingId: "UA-100157497-1",
+      trackingId: "",
     },
     meta: {},
     minify: isDevelopment
