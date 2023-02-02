@@ -55,7 +55,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Bienvenu à Bitburner, un RPG incrémental sur le thème cyberpunk! Le jeu à lieu dans un futur noir et distopique... En l'an 2077...
+            Bienvenu à Bitburner, un jeu de rôle vidéo incrémental sur le thème cyberpunk! Le jeu à lieu dans un futur noir et distopique... En l'an 2077...
             <br />
             <br />
             Ce tutoriel va te montrer les bases du jeu. Tu peux sauter le tutoriel à n'importe quel moment.
