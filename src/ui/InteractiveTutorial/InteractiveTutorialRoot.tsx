@@ -312,7 +312,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalCreateScript as number]: {
       content: (
         <>
-          <Typographie>
+          <Typography>
             Le piratage est le mécanisme de base du jeu et est nécessaire pour progresser. Cependant, vous ne voulez pas être
             piratage manuel tout le temps. Vous pouvez automatiser votre piratage en écrivant des scripts !
             <br />
@@ -324,9 +324,9 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           <Typographie>Les scripts doivent se terminer par l'extension .js. Faisons maintenant un script en saisissant </Typography>
           <Typography classes={{ root : classes.textfield }}>{`[home ~/]> nano ${tutorialScriptName}`}</Typography>
 
-          <Typographie>
+          <Typography>
             après la fin de l'exécution de la commande hack (Note : appuyer sur ctrl + c mettra fin à une commande comme hack avant qu'elle finisse)
-          </Typographie>
+          </Typography>
         </>
       ),
       canNext: false,
