@@ -7,32 +7,32 @@ import { Location } from "../Locations/Location";
  * transition to. You can use setPage() with these.
  */
 export enum SimplePage {
-  ActiveScripts = "Active Scripts",
+  ActiveScripts = "Scripts Actifs",
   Augmentations = "Augmentations",
   Bladeburner = "Bladeburner",
   City = "Ville",
-  Corporation = "Corporation",
-  CreateProgram = "Create Program",
+  Corporation = "Entreprise",
+  CreateProgram = "Creer un Programme",
   DevMenu = "Dev",
   Factions = "Factions",
   Gang = "Gang",
   Hacknet = "Hacknet",
-  Milestones = "Milestones",
+  Milestones = "Jalons",
   Options = "Options",
   Grafting = "Grafting",
   Sleeves = "Sleeves",
   Stats = "Statistiques",
   StockMarket = "Stock Market",
   Terminal = "Terminal",
-  Travel = "Travel",
+  Travel = "Voyage",
   Tutorial = "Tutoriel",
-  Work = "Work",
+  Work = "Travail",
   BladeburnerCinematic = "Bladeburner Cinematic",
-  Loading = "Loading",
+  Loading = "Chargement",
   StaneksGift = "Staneks Gift",
   Recovery = "Recovery",
-  Achievements = "Achievements",
-  ThemeBrowser = "Theme Browser",
+  Achievements = "Réalisations",
+  ThemeBrowser = "Navigateur de Thèmes",
 }
 
 /**
@@ -43,9 +43,9 @@ export enum ComplexPage {
   Faction = "Faction",
   Infiltration = "Infiltration",
   Job = "Job",
-  ScriptEditor = "Script Editor",
-  Location = "Location",
-  ImportSave = "Import Save",
+  ScriptEditor = "Editeur de Script",
+  Location = "Localisation",
+  ImportSave = "Importer une Sauvegarde",
 }
 
 // Using the same name as both type and object to mimic enum-like behavior.
