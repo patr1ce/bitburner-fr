@@ -55,14 +55,13 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Welcome to Bitburner, a cyberpunk-themed incremental RPG! The game takes place in a dark, dystopian
-            future... The year is 2077...
+            Bienvenu à Bitburner, un RPG incrémental sur le thème cyberpunk! Le jeu à lieu dans un futur noir et distopique... En l'an 2077...
             <br />
             <br />
-            This tutorial will show you the basics of the game. You may skip the tutorial at any time.
+            Ce tutoriel va te montrer les bases du jeu. Tu peux sauter le tutoriel à n'importe quel moment.
             <br />
             <br />
-            You can also collapse this panel to temporarily hide this tutorial.
+            Tu peux aussi fermer cette fenetre ou cacher temporairement ce tutoriel.
           </Typography>
         </>
       ),
@@ -71,13 +70,13 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.GoToCharacterPage as number]: {
       content: (
         <>
-          <Typography>Let's start by heading to the Stats page. Click</Typography>
+          <Typographie>Commençons par nous diriger vers la page des statistiques. Cliquez</Typographie>
           <ListItem>
             <EqualizerIcon color={"error"} />
-            <Typography color={"error"}>Stats</Typography>
+            <Typography color={"error"}>Statistiques</Typography>
           </ListItem>
 
-          <Typography>on the main navigation menu (left-hand side of the screen)</Typography>
+          <Typography>dans le menu de navigation principal (côté gauche de l'écran)</Typography>
         </>
       ),
       canNext: false,
@@ -87,10 +86,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <>
           <ListItem>
             <EqualizerIcon color={"primary"} />
-            <Typography color={"primary"}>Stats</Typography>
+            <Typography color={"primary"}>Statistiques</Typography>
           </ListItem>
-          <Typography>
-            shows a lot of important information about your progress, such as your skills, money, and bonuses.
+          <Typographie>
+            affiche de nombreuses informations importantes sur votre progression, telles que vos compétences, votre argent et vos bonus.
           </Typography>
         </>
       ),
@@ -99,12 +98,12 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.CharacterGoToTerminalPage as number]: {
       content: (
         <>
-          <Typography>Let's head to your computer's terminal by clicking</Typography>
+          <Typography>Allons au terminal de votre ordinateur en cliquant sur</Typography>
           <ListItem>
             <LastPageIcon color={"error"} />
             <Typography color={"error"}>Terminal</Typography>
           </ListItem>
-          <Typography>on the main navigation menu.</Typography>
+          <Typographie>dans le menu de navigation principal.</Typographie>
         </>
       ),
       canNext: false,
@@ -117,7 +116,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             <Typography color={"primary"}>Terminal</Typography>
           </ListItem>
           <Typography>
-            is used to interface with your home computer as well as all of the other machines around the world.
+            est utilisé pour s'interfacer avec votre ordinateur personnel ainsi qu'avec toutes les autres machines du monde entier.
           </Typography>
         </>
       ),
@@ -126,9 +125,9 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalHelp as number]: {
       content: (
         <>
-          <Typography>Let's try it out. Start by entering</Typography>
-          <Typography classes={{ root: classes.textfield }}>{"[home ~/]> help"}</Typography>
-          <Typography>(Don't forget to press Enter after typing the command)</Typography>
+          <Typography>Essayons. Commencez par saisir</Typography>
+          <Typography classes={{ root : classes.textfield }}>{"[home ~/]> help"}</Typography>
+          <Typography>(N'oubliez pas d'appuyer sur Entrée après avoir tapé la commande)</Typography>
         </>
       ),
       canNext: false,
@@ -138,10 +137,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> help"}</Typography>
           <Typography>
-            displays a list of all available Terminal commands, how to use them, and a description of what they do.{" "}
+            affiche une liste de toutes les commandes Terminal disponibles, comment les utiliser et une description de ce qu'elles font.{" "}
             <br />
             <br />
-            Let's try another command. Enter
+            Essayons une autre commande. Entrer
           </Typography>
 
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> ls"}</Typography>
@@ -155,11 +154,11 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> ls"}</Typography>
           <Typography>
             {" "}
-            is a basic command that shows files on the computer. Right now, it shows that you have a program called{" "}
-            NUKE.exe on your computer. We'll get to what this does later. <br />
+            est une commande de base qui affiche les fichiers sur l'ordinateur. En ce moment, cela montre que vous avez un programme appelé {" "}
+            NUKE.exe sur votre ordinateur. Nous verrons ce que cela fait plus tard. <br />
             <br />
-            Using your home computer's terminal, you can connect to other machines throughout the world. Let's do that
-            now by first entering
+            À l'aide du terminal de votre ordinateur personnel, vous pouvez vous connecter à d'autres machines dans le monde entier. Faisons cela
+            maintenant en entrant d'abord
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan"}</Typography>
         </>
@@ -171,14 +170,14 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan"}</Typography>
           <Typography>
-            shows all available network connections. In other words, it displays a list of all servers that can be
-            connected to from your current machine. A server is identified by its hostname. <br />
+            affiche toutes les connexions réseau disponibles. En d'autres termes, il affiche une liste de tous les serveurs qui peuvent être
+            connecté à partir de votre machine actuelle. Un serveur est identifié par son nom d'hôte. <br />
             <br />
-            That's great and all, but there's so many servers. Which one should you go to?{" "}
-          </Typography>
+            C'est super et tout, mais il y a tellement de serveurs. Dans lequel devriez-vous aller ?{" "}
+          </Typographie>
 
-          <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan-analyze"}</Typography>
-          <Typography>gives some more detailed information about servers on the network. Try it now!</Typography>
+          <Typography classes={{ root : classes.textfield }}>{"[home ~/]> scan-analyze"}</Typography>
+          <Typographie> donne des informations plus détaillées sur les serveurs du réseau. Essayez-le maintenant !</Typography>
         </>
       ),
       canNext: false,
@@ -188,10 +187,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan-analyze"}</Typography>
           <Typography>
-            shows more detailed information about each server that you can connect to (servers that are a distance of
-            one node away). <br />
-            <br /> It is also possible to run scan-analyze with a higher depth. Let's try a depth of two with the
-            following command:{" "}
+            affiche des informations plus détaillées sur chaque serveur auquel vous pouvez vous connecter (serveurs distants de
+            à un nœud de distance). <br />
+            <br /> Il est également possible d'exécuter une analyse par balayage avec une profondeur plus élevée. Essayons une profondeur de deux avec le
+            commande suivante :{" "}
           </Typography>
 
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan-analyze 2"}</Typography>
@@ -203,9 +202,9 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Now you can see information about all servers that are up to two nodes away, as well as figure out how to
-            navigate to those servers through the network. You can only connect to a server that is one node away. To
-            connect to a machine, use
+            Vous pouvez maintenant voir des informations sur tous les serveurs situés jusqu'à deux nœuds, ainsi que comprendre comment
+            accéder à ces serveurs via le réseau. Vous ne pouvez vous connecter qu'à un serveur distant d'un nœud. Pour
+            connecter à une machine, utiliser
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> connect hostname"}</Typography>
 
@@ -214,7 +213,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
 
           <Typography>
             {" "}
-            we can see that the n00dles server is only one node away. Let's connect to it now using:
+            nous pouvons voir que le serveur n00dles n'est qu'à un nœud. Connectons-y maintenant en utilisant :
           </Typography>
 
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> connect n00dles"}</Typography>
@@ -226,13 +225,13 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            You are now connected to another machine! What can you do now? You can hack it!
+            Vous êtes maintenant connecté à une autre machine ! Que pouvez-vous faire maintenant? Vous pouvez le pirater !
             <br />
-            <br /> In the year 2077, currency has become digital and decentralized. People and corporations store their
-            money on servers and computers. Using your hacking abilities, you can hack servers to steal money and gain
-            experience. <br />
+            <br /> En l'an 2077, la monnaie est devenue numérique et décentralisée. Les particuliers et les entreprises stockent leurs
+            l'argent sur les serveurs et les ordinateurs. En utilisant vos capacités de piratage, vous pouvez pirater des serveurs pour voler de l'argent et gagner
+            de l'expérience. <br />
             <br />
-            Before you try to hack a server, you should run diagnostics using{" "}
+            Avant d'essayer de pirater un serveur, vous devez exécuter des diagnostics à l'aide de {" "}
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
         </>
@@ -246,18 +245,18 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
 
           <Typography>
-            finishes running it will show useful information about hacking the server. <br />
-            <br /> For this server, the required hacking skill is only 1, which means you can hack it right now.
-            However, in order to hack a server you must first gain root access. The NUKE.exe program that we saw earlier
-            on your home computer is a virus that will grant you root access to a machine if there are enough open
+            termine son exécution, il affichera des informations utiles sur le piratage du serveur. <br />
+            <br /> Pour ce serveur, la compétence de piratage requise n'est que de 1, ce qui signifie que vous pouvez le pirater dès maintenant.
+            Cependant, pour pirater un serveur, vous devez d'abord obtenir un accès root. Le programme NUKE.exe que nous avons vu précédemment
+            sur votre ordinateur personnel se trouve un virus qui vous accordera un accès root à une machine s'il y en a suffisamment
             ports.
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
 
           <Typography>
             {" "}
-            shows that there do not need to be any open ports on this machine for the NUKE virus to work, so go ahead
-            and run the virus using{" "}
+            montre qu'il n'est pas nécessaire d'avoir des ports ouverts sur cette machine pour que le virus NUKE fonctionne, alors allez-y
+            et exécutez le virus en utilisant {" "}
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> run NUKE.exe"}</Typography>
 
@@ -269,10 +268,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalManualHack as number]: {
       content: (
         <>
-          <Typography>You now have root access! You can hack the server using </Typography>
+          <Typography>Vous avez maintenant un accès root ! Vous pouvez pirater le serveur en utilisant </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> hack"}</Typography>
 
-          <Typography> Try doing that now.</Typography>
+          <Typography> Essayez de le faire maintenant.</Typography>
         </>
       ),
       canNext: true,
@@ -280,21 +279,21 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalHackingMechanics as number]: {
       content: (
         <Typography>
-          You are now attempting to hack the server. Performing a hack takes time and only has a certain percentage
-          chance of success. This time and success chance is determined by a variety of factors, including your hacking
-          skill and the server's security level.
+         Vous essayez maintenant de pirater le serveur. Effectuer un hack prend du temps et n'a qu'un certain pourcentage
+          chance de succès. Ce temps et cette chance de réussite sont déterminés par une variété de facteurs, y compris votre piratage
+          compétence et le niveau de sécurité du serveur.
           <br />
           <br />
-          If your attempt to hack the server is successful, you will steal a certain percentage of the server's total
-          money. This percentage is affected by your hacking skill and the server's security level.
+          Si votre tentative de pirater le serveur réussit, vous volerez un certain pourcentage du total du serveur
+          de l'argent. Ce pourcentage est affecté par votre compétence de piratage et le niveau de sécurité du serveur.
           <br />
           <br />
-          The amount of money on a server is not limitless. So, if you constantly hack a server and deplete its money,
-          then you will encounter diminishing returns in your hacking. You will need to use{" "}
-          <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> grow"}</Typography>
-          which tricks the company into adding money to their server and{" "}
-          <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> weaken"}</Typography>
-          which increases the speed of hack and grow.
+          La somme d'argent sur un serveur n'est pas illimitée. Donc, si vous piratez constamment un serveur et épuisez son argent,
+          alors vous rencontrerez des rendements décroissants dans votre piratage. Vous devrez utiliser {" "}
+          <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> grow"}</Typography>
+          qui incite l'entreprise à ajouter de l'argent à son serveur et{" "}
+          <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> affaiblir"}</Typography>
+          ce qui augmente la vitesse de piratage et de croissance.
         </Typography>
       ),
       canNext: true,
@@ -302,10 +301,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalGoHome as number]: {
       content: (
         <>
-          <Typography>From any server you can get back home using</Typography>
-          <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> home"}</Typography>
+          <Typography>Depuis n'importe quel serveur, vous pouvez rentrer chez vous en utilisant</Typography>
+          <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> home"}</Typography>
 
-          <Typography>Let's head home before creating our first script!</Typography>
+          <Typography>Rentrons à la maison avant de créer notre premier script !</Typography>
         </>
       ),
       canNext: false,
@@ -313,21 +312,21 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalCreateScript as number]: {
       content: (
         <>
-          <Typography>
-            Hacking is the core mechanic of the game and is necessary for progressing. However, you don't want to be
-            hacking manually the entire time. You can automate your hacking by writing scripts!
+          <Typographie>
+            Le piratage est le mécanisme de base du jeu et est nécessaire pour progresser. Cependant, vous ne voulez pas être
+            piratage manuel tout le temps. Vous pouvez automatiser votre piratage en écrivant des scripts !
             <br />
             <br />
-            To create a new script or edit an existing one, you can use{" "}
-          </Typography>
-          <Typography classes={{ root: classes.textfield }}>{"[home ~/]> nano"}</Typography>
+            Pour créer un nouveau script ou en modifier un existant, vous pouvez utiliser {" "}
+          </Typographie>
+          <Typography classes={{ root : classes.textfield }}>{"[home ~/]> nano"}</Typography>
 
-          <Typography>Scripts must end with the .js extension. Let's make a script now by entering </Typography>
-          <Typography classes={{ root: classes.textfield }}>{`[home ~/]> nano ${tutorialScriptName}`}</Typography>
+          <Typographie>Les scripts doivent se terminer par l'extension .js. Faisons maintenant un script en saisissant </Typography>
+          <Typography classes={{ root : classes.textfield }}>{`[home ~/]> nano ${tutorialScriptName}`}</Typography>
 
-          <Typography>
-            after the hack command finishes running (Sidenote: Pressing ctrl + c will end a command like hack early)
-          </Typography>
+          <Typographie>
+            après la fin de l'exécution de la commande hack (Note : appuyer sur ctrl + c mettra fin à une commande comme hack avant qu'elle finisse)
+          </Typographie>
         </>
       ),
       canNext: false,
@@ -336,8 +335,8 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            This is the script editor. You can use it to program your scripts. Copy and paste the following code into
-            the script editor: <br />
+            C'est l'éditeur de script. Vous pouvez l'utiliser pour programmer vos scripts. Copiez et collez le code suivant dans
+            l'éditeur de script : <br />
           </Typography>
 
           <Typography classes={{ root: classes.code }}>
