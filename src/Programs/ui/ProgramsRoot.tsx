@@ -70,9 +70,9 @@ export function ProgramsRoot(): React.ReactElement {
     <Container disableGutters maxWidth="lg" sx={{ mx: 0, mb: 10 }}>
       <Typography variant="h4">Create program</Typography>
       <Typography>
-        This page displays any programs that you are able to create. Writing the code for a program takes time, which
-        can vary based on how complex the program is. If you are working on creating a program you can cancel at any
-        time. Your progress will be saved and you can continue later.
+        Cette page affiche tous les programmes que vous pouvez créer. L'écriture du code d'un programme prend du temps, ce qui
+        peut varier en fonction de la complexité du programme. Si vous travaillez sur la création d'un programme, vous pouvez annuler à tout moment
+        temps. Votre progression sera enregistrée et vous pourrez continuer plus tard.
       </Typography>
 
       <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", my: 1 }}>
