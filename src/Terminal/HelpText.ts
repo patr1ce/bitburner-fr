@@ -401,7 +401,7 @@ export const HelpTexts: Record<string, string[]> = {
     "les programmes DeepscanV1.exe et DeepscanV2.exe, vous pouvez exécuter 'scan-analyze' avec une profondeur allant jusqu'à ",
     "5 et 10, respectivement.",
     " ",
-    "Les informations 'scan-analyze' affichées sur chaque serveur incluent si vous avez ou non un accès root à celui-ci", ",
+    "Les informations 'scan-analyze' affichées sur chaque serveur incluent si vous avez ou non un accès root à celui-ci",
     "son niveau de piratage requis, le nombre de ports ouverts requis pour exécuter NUKE.exe dessus et la quantité de RAM",
     "il a.",
     " ",
