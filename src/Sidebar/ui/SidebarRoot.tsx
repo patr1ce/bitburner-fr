@@ -310,7 +310,7 @@ export function SidebarRoot(props: IProps): React.ReactElement {
         />
         <Divider />
         <SidebarAccordion
-          key_="Character"
+          key_="Personnage"
           page={props.page}
           clickPage={clickPage}
           flash={flash}
@@ -318,7 +318,7 @@ export function SidebarRoot(props: IProps): React.ReactElement {
           sidebarOpen={open}
           classes={classes}
           items={[
-            { key_: Page.Stats, icon: EqualizerIcon },
+            { key_: Page.Statistiques, icon: EqualizerIcon },
             canOpenFactions && {
               key_: Page.Factions,
               icon: ContactsIcon,
@@ -336,7 +336,7 @@ export function SidebarRoot(props: IProps): React.ReactElement {
         />
         <Divider />
         <SidebarAccordion
-          key_="World"
+          key_="Monde"
           page={props.page}
           clickPage={clickPage}
           flash={flash}
