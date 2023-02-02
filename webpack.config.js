@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
 
   const devServerSettings = {
     hot: true,
-    port: 8000,
+    port: 8001,
     publicPath: `/`,
     stats: statsConfig,
   };
