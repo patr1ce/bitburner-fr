@@ -971,11 +971,11 @@ export function Root(props: IProps): React.ReactElement {
         }}
       >
         <span style={{ color: Settings.theme.primary, fontSize: "20px", textAlign: "center" }}>
-          <Typography variant="h4">No open files</Typography>
+          <Typography variant="h4">Pas de fichier ouvert</Typography>
           <Typography variant="h5">
-            Use <code>nano FILENAME</code> in
+            Utilise <code>nano NOMDEFICHIER</code> dans
             <br />
-            the terminal to open files
+            le terminal pour ouvrir un fichier
           </Typography>
         </span>
       </div>
