@@ -14,7 +14,7 @@ export const TerminalHelpText: string[] = [
   "    cls                                  Voir la commande 'clear' ",
   "    connect [hostname]                   Se connecte à un serveur distant",
   "    cp [src] [dst]                       Copier un fichier",
-  "    download [script/text file]          Télécharge des scripts ou des fichiers texte sur votre ordinateur"
+  "    download [script/text file]          Télécharge des scripts ou des fichiers texte sur votre ordinateur",
   "    expr [math expression]               Évaluer une expression mathématique",
   "    free                                 Vérifiez l'utilisation de la mémoire (RAM) de la machine",
   "    grow                                 Faux de l'argent sur le compte bancaire d'un serveur, augmentant le montant disponible.",
