@@ -18,11 +18,11 @@ export function PurchaseButton(props: IProps): React.ReactElement {
   let text;
   if (hasHacknetServers()) {
     if (hasMaxNumberHacknetServers()) {
-      text = <>Hacknet Server limit reached</>;
+      text = <>Limite de serveurs Hacknet atteinte</>;
     } else {
       text = (
         <>
-          Purchase Hacknet Server -&nbsp;
+          Acheter un noeud Hacknet -&nbsp;
           <Money money={cost} forPurchase={true} />
         </>
       );
@@ -30,7 +30,7 @@ export function PurchaseButton(props: IProps): React.ReactElement {
   } else {
     text = (
       <>
-        Purchase Hacknet Node -&nbsp;
+        Acheter un noeud Hacknet -&nbsp;
         <Money money={cost} forPurchase={true} />
       </>
     );
