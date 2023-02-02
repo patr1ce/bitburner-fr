@@ -174,10 +174,10 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             connecté à partir de votre machine actuelle. Un serveur est identifié par son nom d'hôte. <br />
             <br />
             C'est super et tout, mais il y a tellement de serveurs. Dans lequel devriez-vous aller ?{" "}
-          </Typographie>
+          </Typography>
 
           <Typography classes={{ root : classes.textfield }}>{"[home ~/]> scan-analyze"}</Typography>
-          <Typographie> donne des informations plus détaillées sur les serveurs du réseau. Essayez-le maintenant !</Typography>
+          <Typography> donne des informations plus détaillées sur les serveurs du réseau. Essayez-le maintenant !</Typography>
         </>
       ),
       canNext: false,
