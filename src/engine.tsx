@@ -348,19 +348,19 @@ const Engine: {
         () =>
           AlertEvents.emit(
             <>
-              <Typography>Offline for {timeOfflineString}. While you were offline:</Typography>
+              <Typography>Hors ligne depuis {timeOfflineString}. Pendant que tu étais hors ligne:</Typography>
               <ul>
                 <li>
                   <Typography>
-                    Your scripts generated <Money money={offlineHackingIncome} />
+                    Tes scripts ont generés <Money money={offlineHackingIncome} />
                   </Typography>
                 </li>
                 <li>
-                  <Typography>Your Hacknet Nodes generated {hacknetProdInfo}</Typography>
+                  <Typography>Tes noeuds Hacknet ont generés {hacknetProdInfo}</Typography>
                 </li>
                 <li>
                   <Typography>
-                    You gained <Reputation reputation={offlineReputation} /> reputation divided amongst your factions
+                    Tu as gagné <Reputation reputation={offlineReputation} /> reputation divisé parmis the factions
                   </Typography>
                 </li>
               </ul>
