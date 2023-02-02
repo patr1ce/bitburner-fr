@@ -17,7 +17,7 @@ export const TerminalHelpText: string[] = [
   "    download [script/text file]          Télécharge des scripts ou des fichiers texte sur votre ordinateur",
   "    expr [math expression]               Évaluer une expression mathématique",
   "    free                                 Vérifiez l'utilisation de la mémoire (RAM) de la machine",
-  "    grow                                 Faux de l'argent sur le compte bancaire d'un serveur, augmentant le montant disponible.",
+  "    grow                                 Falsifie de l'argent sur le compte bancaire d'un serveur, augmentant le montant disponible.",
   "    hack                                 Hackez la machine actuelle",
   "    help [command]                       Afficher ce texte d'aide ou le texte d'aide d'une commande",
   "    history [-c]                         Afficher l'historique du terminal",
