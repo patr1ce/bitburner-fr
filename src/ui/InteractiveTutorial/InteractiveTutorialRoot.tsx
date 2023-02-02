@@ -525,9 +525,9 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           mais je vous suggère fortement de lire (ou au moins de parcourir) ceci avant de commencer à jouer.
           <br />
           <br />
-          Les{" "}
+          Le{" "}
           <a href="https://bitburner.readthedocs.io/en/latest/guidesandtips/gettingstartedguideforbeginnerprogrammers.html">
-            Commencer
+            Getting Started
           </a>{" "}
           contient le guide pour les nouveaux joueurs, vous guidant à travers la majeure partie du début du jeu.
           <br />
