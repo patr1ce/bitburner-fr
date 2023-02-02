@@ -141,7 +141,7 @@ export class Terminal {
       this.error("Cannot hack this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     this.startAction(calculateHackingTime(server, Player) / 4, "h", server);
   }
 
@@ -151,7 +151,7 @@ export class Terminal {
       this.error("Cannot grow this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     this.startAction(calculateGrowTime(server, Player) / 16, "g", server);
   }
   startWeaken(): void {
@@ -160,7 +160,7 @@ export class Terminal {
       this.error("Cannot weaken this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     this.startAction(calculateWeakenTime(server, Player) / 16, "w", server);
   }
 
@@ -171,7 +171,7 @@ export class Terminal {
       this.error("Cannot backdoor this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     this.startAction(calculateHackingTime(server, Player) / 4, "b", server);
   }
 
@@ -193,7 +193,7 @@ export class Terminal {
       this.error("Cannot hack this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
 
     // Calculate whether hack was successful
     const hackChance = calculateHackingChance(server, Player);
@@ -224,12 +224,12 @@ export class Terminal {
       const newSec = server.hackDifficulty;
 
       this.print(
-        `Hack successful on '${server.hostname}'! Gained ${numeralWrapper.formatMoney(
+        `Hack réussit sur '${server.hostname}'! Gained ${numeralWrapper.formatMoney(
           moneyGained,
         )} and ${numeralWrapper.formatExp(expGainedOnSuccess)} hacking exp`,
       );
       this.print(
-        `Security increased on '${server.hostname}' from ${numeralWrapper.formatSecurity(
+        `Securité augmentée sur '${server.hostname}' from ${numeralWrapper.formatSecurity(
           oldSec,
         )} to ${numeralWrapper.formatSecurity(newSec)}`,
       );
@@ -237,7 +237,7 @@ export class Terminal {
       // Failure
       Player.gainHackingExp(expGainedOnFailure);
       this.print(
-        `Failed to hack '${server.hostname}'. Gained ${numeralWrapper.formatExp(expGainedOnFailure)} hacking exp`,
+        `Hack raté sur '${server.hostname}'. Gain de ${numeralWrapper.formatExp(expGainedOnFailure)} d'expérience de hacking`,
       );
     }
   }
@@ -249,7 +249,7 @@ export class Terminal {
       this.error("Cannot grow this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     const expGain = calculateHackingExpGain(server, Player);
     const oldSec = server.hackDifficulty;
     const growth = processSingleServerGrowth(server, 25, server.cpuCores) - 1;
@@ -263,7 +263,7 @@ export class Terminal {
       )}. Gained ${numeralWrapper.formatExp(expGain)} hacking exp.`,
     );
     this.print(
-      `Security increased on '${server.hostname}' from ${numeralWrapper.formatSecurity(
+      `Securité augmentée sur '${server.hostname}' depuis ${numeralWrapper.formatSecurity(
         oldSec,
       )} to ${numeralWrapper.formatSecurity(newSec)}`,
     );
@@ -276,7 +276,7 @@ export class Terminal {
       this.error("Cannot weaken this kind of server");
       return;
     }
-    if (!(server instanceof Server)) throw new Error("server should be normal server");
+    if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
     const expGain = calculateHackingExpGain(server, Player);
     const oldSec = server.hackDifficulty;
     server.weaken(CONSTANTS.ServerWeakenAmount);
@@ -294,10 +294,10 @@ export class Terminal {
   finishBackdoor(server: BaseServer, cancelled = false): void {
     if (!cancelled) {
       if (server instanceof HacknetServer) {
-        this.error("Cannot hack this kind of server");
+        this.error("Impossible de hacker ce type de server");
         return;
       }
-      if (!(server instanceof Server)) throw new Error("server should be normal server");
+      if (!(server instanceof Server)) throw new Error("le server doit etre un serveur normal");
       server.backdoorInstalled = true;
       if (SpecialServers.WorldDaemon === server.hostname) {
         if (Player.bitNodeN == null) {
@@ -315,22 +315,22 @@ export class Terminal {
       const isHacknet = currServ instanceof HacknetServer;
       this.print(currServ.hostname + ": ");
       const org = currServ.organizationName;
-      this.print("Organization name: " + (!isHacknet ? org : "player"));
+      this.print("Nom de l'entreprise: " + (!isHacknet ? org : "player"));
       const hasAdminRights = (!isHacknet && currServ.hasAdminRights) || isHacknet;
-      this.print("Root Access: " + (hasAdminRights ? "YES" : "NO"));
+      this.print("Access Root : " + (hasAdminRights ? "OUI" : "NON"));
       const canRunScripts = hasAdminRights && currServ.maxRam > 0;
-      this.print("Can run scripts on this host: " + (canRunScripts ? "YES" : "NO"));
+      this.print("Possibilité de lancer des scripts sur ce server: " + (canRunScripts ? "OUI" : "NON"));
       this.print("RAM: " + numeralWrapper.formatRAM(currServ.maxRam));
       if (currServ instanceof Server) {
-        this.print("Backdoor: " + (currServ.backdoorInstalled ? "YES" : "NO"));
+        this.print("Backdoor: " + (currServ.backdoorInstalled ? "OUI" : "NON"));
         const hackingSkill = currServ.requiredHackingSkill;
-        this.print("Required hacking skill for hack() and backdoor: " + (!isHacknet ? hackingSkill : "N/A"));
+        this.print("Compétences de hacking requise pour hack() et backdoor: " + (!isHacknet ? hackingSkill : "N/A"));
         const security = currServ.hackDifficulty;
-        this.print("Server security level: " + (!isHacknet ? numeralWrapper.formatServerSecurity(security) : "N/A"));
+        this.print("Niveau de securité du serveur: " + (!isHacknet ? numeralWrapper.formatServerSecurity(security) : "N/A"));
         const hackingChance = calculateHackingChance(currServ, Player);
-        this.print("Chance to hack: " + (!isHacknet ? numeralWrapper.formatPercentage(hackingChance) : "N/A"));
+        this.print("Chance de hacker: " + (!isHacknet ? numeralWrapper.formatPercentage(hackingChance) : "N/A"));
         const hackingTime = calculateHackingTime(currServ, Player) * 1000;
-        this.print("Time to hack: " + (!isHacknet ? convertTimeMsToTimeElapsedString(hackingTime, true) : "N/A"));
+        this.print("Temps pour hacker: " + (!isHacknet ? convertTimeMsToTimeElapsedString(hackingTime, true) : "N/A"));
       }
       this.print(
         `Total money available on server: ${
@@ -339,12 +339,12 @@ export class Terminal {
       );
       if (currServ instanceof Server) {
         const numPort = currServ.numOpenPortsRequired;
-        this.print("Required number of open ports for NUKE: " + (!isHacknet ? numPort : "N/A"));
-        this.print("SSH port: " + (currServ.sshPortOpen ? "Open" : "Closed"));
-        this.print("FTP port: " + (currServ.ftpPortOpen ? "Open" : "Closed"));
-        this.print("SMTP port: " + (currServ.smtpPortOpen ? "Open" : "Closed"));
-        this.print("HTTP port: " + (currServ.httpPortOpen ? "Open" : "Closed"));
-        this.print("SQL port: " + (currServ.sqlPortOpen ? "Open" : "Closed"));
+        this.print("Nombre de ports requis pour NUKE: " + (!isHacknet ? numPort : "N/A"));
+        this.print("SSH port: " + (currServ.sshPortOpen ? "Ouvert" : "Fermé"));
+        this.print("FTP port: " + (currServ.ftpPortOpen ? "Ouvert" : "Fermé"));
+        this.print("SMTP port: " + (currServ.smtpPortOpen ? "Ouvert" : "Fermé"));
+        this.print("HTTP port: " + (currServ.httpPortOpen ? "Ouvert" : "Fermé"));
+        this.print("SQL port: " + (currServ.sqlPortOpen ? "Ouvert" : "Fermé"));
       }
     }
   }
@@ -499,7 +499,7 @@ export class Terminal {
 
   executeScanAnalyzeCommand(depth = 1, all = false): void {
     // TODO Using array as stack for now, can make more efficient
-    this.print("~~~~~~~~~~ Beginning scan-analyze ~~~~~~~~~~");
+    this.print("~~~~~~~~~~ Démarrage de scan-analyze ~~~~~~~~~~");
     this.print(" ");
 
     // Map of all servers to keep track of which have been visited
@@ -546,17 +546,17 @@ export class Terminal {
       }
 
       const dashes = titleDashes + "--";
-      let c = "NO";
+      let c = "NON";
       if (s.hasAdminRights) {
-        c = "YES";
+        c = "OUI";
       }
       if (s instanceof Server) {
         this.print(
-          `${dashes}Root Access: ${c}${!isHacknet ? ", Required hacking skill: " + s.requiredHackingSkill : ""}`,
+          `${dashes}Acces root: ${c}${!isHacknet ? ", Compétence de hacking requise: " + s.requiredHackingSkill : ""}`,
         );
 
         if (s.hasOwnProperty("numOpenPortsRequired")) {
-          this.print(dashes + "Number of open ports required to NUKE: " + s.numOpenPortsRequired);
+          this.print(dashes + "Nombre de ports ouverts requis pour NUKE: " + s.numOpenPortsRequired);
         }
       }
       this.print(dashes + "RAM: " + numeralWrapper.formatRAM(s.maxRam));
