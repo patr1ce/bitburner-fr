@@ -88,7 +88,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             <EqualizerIcon color={"primary"} />
             <Typography color={"primary"}>Statistiques</Typography>
           </ListItem>
-          <Typographie>
+          <Typography>
             affiche de nombreuses informations importantes sur votre progression, telles que vos compétences, votre argent et vos bonus.
           </Typography>
         </>
@@ -103,7 +103,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             <LastPageIcon color={"error"} />
             <Typography color={"error"}>Terminal</Typography>
           </ListItem>
-          <Typographie>dans le menu de navigation principal.</Typographie>
+          <Typography>dans le menu de navigation principal.</Typography>
         </>
       ),
       canNext: false,
