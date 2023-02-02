@@ -208,7 +208,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> connect hostname"}</Typography>
 
-          <Typography>From the results of </Typography>
+          <Typography>D'après les résultats de </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan-analyze 2"}</Typography>
 
           <Typography>
@@ -225,7 +225,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Vous êtes maintenant connecté à une autre machine ! Que pouvez-vous faire maintenant? Vous pouvez le pirater !
+            Vous êtes maintenant connecté à une autre machine ! Que pouvez-vous faire maintenant? Vous pouvez la pirater !
             <br />
             <br /> En l'an 2077, la monnaie est devenue numérique et décentralisée. Les particuliers et les entreprises stockent leurs
             l'argent sur les serveurs et les ordinateurs. En utilisant vos capacités de piratage, vous pouvez pirater des serveurs pour voler de l'argent et gagner
@@ -248,8 +248,8 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             termine son exécution, il affichera des informations utiles sur le piratage du serveur. <br />
             <br /> Pour ce serveur, la compétence de piratage requise n'est que de 1, ce qui signifie que vous pouvez le pirater dès maintenant.
             Cependant, pour pirater un serveur, vous devez d'abord obtenir un accès root. Le programme NUKE.exe que nous avons vu précédemment
-            sur votre ordinateur personnel se trouve un virus qui vous accordera un accès root à une machine s'il y en a suffisamment
-            ports.
+            sur votre ordinateur personnel se trouve un virus qui vous accordera un accès root à une machine s'il y a suffisamment de
+            ports ouvertsrunha.
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
 
@@ -279,20 +279,20 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalHackingMechanics as number]: {
       content: (
         <Typography>
-         Vous essayez maintenant de pirater le serveur. Effectuer un hack prend du temps et n'a qu'un certain pourcentage
-          chance de succès. Ce temps et cette chance de réussite sont déterminés par une variété de facteurs, y compris votre piratage
-          compétence et le niveau de sécurité du serveur.
+         Vous essayez maintenant de pirater le serveur. Effectuer un hack prend du temps et n'a qu'un certain pourcentage de
+          chance de succès. Ce temps et cette chance de réussite sont déterminés par une variété de facteurs, y compris votre compétence de piratage
+          et le niveau de sécurité du serveur.
           <br />
           <br />
-          Si votre tentative de pirater le serveur réussit, vous volerez un certain pourcentage du total du serveur
-          de l'argent. Ce pourcentage est affecté par votre compétence de piratage et le niveau de sécurité du serveur.
+          Si votre tentative de pirater le serveur réussit, vous volerez un certain pourcentage du total de l'argent du serveur.
+          Ce pourcentage est affecté par votre compétence de piratage et le niveau de sécurité du serveur.
           <br />
           <br />
           La somme d'argent sur un serveur n'est pas illimitée. Donc, si vous piratez constamment un serveur et épuisez son argent,
           alors vous rencontrerez des rendements décroissants dans votre piratage. Vous devrez utiliser {" "}
           <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> grow"}</Typography>
           qui incite l'entreprise à ajouter de l'argent à son serveur et{" "}
-          <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> affaiblir"}</Typography>
+          <Typography classes={{ root : classes.textfield }}>{"[n00dles ~/]> weaken"}</Typography>
           ce qui augmente la vitesse de piratage et de croissance.
         </Typography>
       ),
@@ -313,8 +313,8 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Le piratage est le mécanisme de base du jeu et est nécessaire pour progresser. Cependant, vous ne voulez pas être
-            piratage manuel tout le temps. Vous pouvez automatiser votre piratage en écrivant des scripts !
+            Le piratage est le mécanisme de base du jeu et est nécessaire pour progresser. Cependant, si vous ne voulez pas
+            pirater manuellement tout le temps. Vous pouvez automatiser votre piratage en écrivant des scripts !
             <br />
             <br />
             Pour créer un nouveau script ou en modifier un existant, vous pouvez utiliser {" "}
@@ -351,11 +351,11 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             }
           </Typography>
           <Typography>
-            For anyone with basic programming experience, this code should be straightforward. This script will
-            continuously hack the n00dles server.
+            Pour toute personne ayant une expérience de programmation de base, ce code devrait être simple. Ce script va
+            pirater en permanence le serveur n00dles.
             <br />
             <br />
-            To save and close the script editor, press the button in the bottom left, or press ctrl + s then ctrl + b.
+            Pour enregistrer et fermer l'éditeur de script, appuyez sur le bouton en bas à gauche, ou appuyez sur ctrl + s puis ctrl + b.
           </Typography>
         </>
       ),
@@ -365,12 +365,12 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Now we'll run the script. Scripts require a certain amount of RAM to run, and can be run on any machine
-            which you have root access to. Different servers have different amounts of RAM. You can also purchase more
-            RAM for your home server.
+            Nous allons maintenant exécuter le script. Les scripts nécessitent une certaine quantité de RAM pour s'exécuter et peuvent être exécutés sur n'importe quelle machine
+            auquel vous avez un accès root. Différents serveurs ont différentes quantités de RAM. Vous pouvez également acheter plus
+            RAM pour votre serveur domestique.
             <br />
             <br />
-            To check how much RAM is available on this machine, enter
+            Pour vérifier la quantité de RAM disponible sur cette machine, entrez
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> free"}</Typography>
         </>
@@ -381,7 +381,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            We have 8GB of free RAM on this machine, which is enough to run our script. Let's run our script using
+            Nous avons 8 Go de RAM libre sur cette machine, ce qui est suffisant pour exécuter notre script. Exécutons notre script en utilisant
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{`[home ~/]> run ${tutorialScriptName}`}</Typography>
         </>
@@ -392,13 +392,13 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Your script is now running! It will continuously run in the background and will automatically stop if the
-            code ever completes (the {tutorialScriptName} will never complete because it runs an infinite loop). <br />
+            Votre script est maintenant en cours d'exécution ! Il fonctionnera en continu en arrière-plan et s'arrêtera automatiquement si le
+            code ne se termine jamais (le {tutorialScriptName} ne se terminera jamais car il exécute une boucle infinie). <br />
             <br />
-            These scripts can passively earn you income and hacking experience. Your scripts will also earn money and
-            experience while you are offline, although at a slightly slower rate. <br />
+            Ces scripts peuvent vous rapporter passivement des revenus et de l'expérience de piratage. Vos scripts rapporteront également de l'argent et
+            expérience lorsque vous êtes hors ligne, bien qu'à un rythme légèrement plus lent. <br />
             <br />
-            Let's check out some statistics for our running scripts by clicking{" "}
+            Examinons quelques statistiques sur nos scripts en cours d'exécution en cliquant sur {" "}
           </Typography>
           <ListItem>
             <StorageIcon color={"error"} />
@@ -412,8 +412,8 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            This page displays information about all of your scripts that are running across every server. You can use
-            this to gauge how well your scripts are doing. Let's go back to
+            Cette page affiche des informations sur tous vos scripts qui s'exécutent sur chaque serveur. Vous pouvez utiliser
+            cela pour évaluer la qualité de vos scripts. Revenons à
           </Typography>
           <ListItem>
             <LastPageIcon color={"error"} />
@@ -427,8 +427,8 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            One last thing about scripts, each active script contains logs that detail what it's doing. We can check
-            these logs using the tail command. Do that now for the script we just ran by typing{" "}
+            Une dernière chose à propos des scripts, chaque script actif contient des journaux qui détaillent ce qu'il fait. Nous pouvons vérifier
+            ces journaux à l'aide de la commande tail. Faites-le maintenant pour le script que nous venons d'exécuter en tapant {" "}
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{`[home ~/]> tail ${tutorialScriptName}`}</Typography>
         </>
@@ -439,20 +439,20 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            The log for this script won't show much right now (it might show nothing at all) because it just started
-            running...but check back again in a few minutes! <br />
+            Le journal de ce script n'affichera pas grand-chose pour le moment (il pourrait ne rien afficher du tout) car il vient de commencer
+            en cours d'exécution... mais revenez dans quelques minutes ! <br />
             <br />
-            This covers the basics of hacking. To learn more about writing scripts, select
+            Cela couvre les bases du piratage. Pour en savoir plus sur l'écriture de scripts, sélectionnez
           </Typography>
           <ListItem>
             <HelpIcon color={"primary"} />
             <Typography color={"primary"}>Tutorial</Typography>
           </ListItem>
           <Typography>
-            in the main navigation menu to look at the documentation.
+            dans le menu de navigation principal pour consulter la documentation.
             <br />
             <br />
-            For now, let's move on to something else!
+            Pour l'instant, passons à autre chose !
           </Typography>
         </>
       ),
@@ -462,14 +462,14 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Hacking is not the only way to earn money. One other way to passively earn money is by purchasing and
-            upgrading Hacknet Nodes. Let's go to
+            Le piratage n'est pas le seul moyen de gagner de l'argent. Une autre façon de gagner passivement de l'argent est d'acheter et
+            mise à niveau des nœuds Hacknet. Allons à
           </Typography>
           <ListItem>
             <AccountTreeIcon color={"error"} />
             <Typography color={"error"}>Hacknet</Typography>
           </ListItem>
-          <Typography>through the main navigation menu now.</Typography>
+          <Typography>dans le menu de navigation principal maintenant.</Typography>
         </>
       ),
       canNext: true,
@@ -477,7 +477,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.HacknetNodesIntroduction as number]: {
       content: (
         <Typography>
-          Here you can purchase new Hacknet Nodes and upgrade your existing ones. Let's purchase a new one now.
+          Ici, vous pouvez acheter de nouveaux nœuds Hacknet et mettre à niveau vos nœuds existants. Achetons-en un nouveau maintenant.
         </Typography>
       ),
       canNext: true,
@@ -486,11 +486,11 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            You just purchased a Hacknet Node! This Hacknet Node will passively earn you money over time, both online
-            and offline. When you get enough money, you can upgrade your newly-purchased Hacknet Node below.
+            Vous venez d'acheter un Hacknet Node ! Ce nœud Hacknet vous rapportera passivement de l'argent au fil du temps, à la fois en ligne
+            et hors ligne. Lorsque vous obtenez suffisamment d'argent, vous pouvez mettre à niveau votre nœud Hacknet nouvellement acheté ci-dessous.
             <br />
             <br />
-            Let's go to
+            Allons à
           </Typography>
           <ListItem>
             <LocationCityIcon color={"error"} />
@@ -504,11 +504,11 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            This page lists all of the different locations you can currently travel to. Each location has something that
-            you can do. There's a lot of content out in the world, make sure you explore and discover!
+            Cette page répertorie tous les différents endroits où vous pouvez actuellement vous rendre. Chaque emplacement a quelque chose qui
+            tu peux faire. Il y a beaucoup de contenu dans le monde, assurez-vous d'explorer et de découvrir !
             <br />
             <br />
-            Lastly, click on
+            Cliquez enfin sur
           </Typography>
           <ListItem>
             <HelpIcon color={"error"} />
@@ -521,18 +521,18 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TutorialPageInfo as number]: {
       content: (
         <Typography>
-          This page contains a lot of different documentation about the game's content and mechanics. I know it's a lot,
-          but I highly suggest you read (or at least skim) through this before you start playing.
+          Cette page contient de nombreuses documentations différentes sur le contenu et les mécanismes du jeu. je sais c'est beaucoup,
+          mais je vous suggère fortement de lire (ou au moins de parcourir) ceci avant de commencer à jouer.
           <br />
           <br />
-          The{" "}
+          Les{" "}
           <a href="https://bitburner.readthedocs.io/en/latest/guidesandtips/gettingstartedguideforbeginnerprogrammers.html">
-            Getting Started
+            Commencer
           </a>{" "}
-          contains the guide for new players, navigating you through most of early game.
+          contient le guide pour les nouveaux joueurs, vous guidant à travers la majeure partie du début du jeu.
           <br />
           <br />
-          That's the end of the tutorial. Hope you enjoy the game!
+          C'est la fin du tutoriel. J'espère que vous apprécierez le jeu!
         </Typography>
       ),
       canNext: true,
@@ -575,7 +575,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <br />
         <br />
         <Button onClick={iTutorialEnd}>
-          {step !== iTutorialSteps.TutorialPageInfo ? "SKIP TUTORIAL" : "FINISH TUTORIAL"}
+          {step !== iTutorialSteps.TutorialPageInfo ? "SAUTER LE TUTORIEL" : "TERMINER LE TUTORIEL"}
         </Button>
       </Paper>
     </>
