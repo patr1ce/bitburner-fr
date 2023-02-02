@@ -318,7 +318,7 @@ export function SidebarRoot(props: IProps): React.ReactElement {
           sidebarOpen={open}
           classes={classes}
           items={[
-            { key_: Page.Statistiques, icon: EqualizerIcon },
+            { key_: Page.Stats, icon: EqualizerIcon },
             canOpenFactions && {
               key_: Page.Factions,
               icon: ContactsIcon,
