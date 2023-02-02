@@ -70,7 +70,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.GoToCharacterPage as number]: {
       content: (
         <>
-          <Typographie>Commençons par nous diriger vers la page des statistiques. Cliquez</Typographie>
+          <Typography>Commençons par nous diriger vers la page des statistiques. Cliquez</Typography>
           <ListItem>
             <EqualizerIcon color={"error"} />
             <Typography color={"error"}>Statistiques</Typography>
