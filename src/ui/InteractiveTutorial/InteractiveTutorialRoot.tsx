@@ -188,7 +188,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
           <Typography classes={{ root: classes.textfield }}>{"[home ~/]> scan-analyze"}</Typography>
           <Typography>
             affiche des informations plus détaillées sur chaque serveur auquel vous pouvez vous connecter (serveurs distants de
-            à un nœud de distance). <br />
+            un nœud de distance). <br />
             <br /> Il est également possible d'exécuter une analyse par balayage avec une profondeur plus élevée. Essayons une profondeur de deux avec le
             commande suivante :{" "}
           </Typography>
@@ -241,7 +241,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
     [iTutorialSteps.TerminalNuke as number]: {
       content: (
         <>
-          <Typography>When </Typography>
+          <Typography>Quand </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
 
           <Typography>
@@ -249,7 +249,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
             <br /> Pour ce serveur, la compétence de piratage requise n'est que de 1, ce qui signifie que vous pouvez le pirater dès maintenant.
             Cependant, pour pirater un serveur, vous devez d'abord obtenir un accès root. Le programme NUKE.exe que nous avons vu précédemment
             sur votre ordinateur personnel se trouve un virus qui vous accordera un accès root à une machine s'il y a suffisamment de
-            ports ouvertsrunha.
+            ports ouverts.
           </Typography>
           <Typography classes={{ root: classes.textfield }}>{"[n00dles ~/]> analyze"}</Typography>
 
@@ -463,7 +463,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
         <>
           <Typography>
             Le piratage n'est pas le seul moyen de gagner de l'argent. Une autre façon de gagner passivement de l'argent est d'acheter et
-            mise à niveau des nœuds Hacknet. Allons à
+            mettre à niveau des nœuds Hacknet. Allons à
           </Typography>
           <ListItem>
             <AccountTreeIcon color={"error"} />
@@ -504,7 +504,7 @@ export function InteractiveTutorialRoot(): React.ReactElement {
       content: (
         <>
           <Typography>
-            Cette page répertorie tous les différents endroits où vous pouvez actuellement vous rendre. Chaque emplacement a quelque chose qui
+            Cette page répertorie tous les différents endroits où vous pouvez actuellement vous rendre. Chaque emplacement a quelque chose que
             tu peux faire. Il y a beaucoup de contenu dans le monde, assurez-vous d'explorer et de découvrir !
             <br />
             <br />
