@@ -132,10 +132,9 @@ function installAugmentations(force?: boolean): boolean {
   Player.queuedAugmentations = [];
   if (!force) {
     dialogBoxCreate(
-      "You slowly drift to sleep as scientists put you under in order " +
-        "to install the following Augmentations:\n" +
+      "Tu t'endors lentement alors que les scientifiques te mettent sous anesthésie pour installer les augmentations suivantes :\n" +
         augmentationList +
-        "\nYou wake up in your home...you feel different...",
+        "\nTu te réveilles chez toi... tu te sens différent...",
     );
   }
   prestigeAugmentation();

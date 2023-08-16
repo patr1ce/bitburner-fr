@@ -25,13 +25,13 @@ function showMessage(name: MessageFilenames): void {
   if (!(msg instanceof Message)) throw new Error("trying to display nonexistent message");
   dialogBoxCreate(
     <>
-      Message received from unknown sender:
+      Message reçu d'un expéditeur inconnu :
       <br />
       <br />
       <i>{msg.msg}</i>
       <br />
       <br />
-      This message was saved as {msg.filename} onto your home computer.
+      Ce message a été enregistré sous le nom {msg.filename} sur ton ordinateur personnel.
     </>,
   );
 }
@@ -44,7 +44,7 @@ function addMessageToServer(msg: Message): void {
   }
   const server = GetServer("home");
   if (server == null) {
-    throw new Error("The home server doesn't exist. You done goofed.");
+    throw new Error("Le serveur home n'existe pas. Tu as fait une erreur.");
   }
   server.messages.push(msg.filename);
 }
@@ -53,7 +53,7 @@ function addMessageToServer(msg: Message): void {
 function recvd(msg: Message): boolean {
   const server = GetServer("home");
   if (server == null) {
-    throw new Error("The home server doesn't exist. You done goofed.");
+    throw new Error("Le serveur home n'existe pas. Tu as fait une erreur.");
   }
   return server.messages.includes(msg.filename);
 }
@@ -128,73 +128,72 @@ const Messages: Record<MessageFilenames, Message> = {
   //jump3R Messages
   [MessageFilenames.Jumper0]: new Message(
     MessageFilenames.Jumper0,
-    "I know you can sense it. I know you're searching for it. " +
-      "It's why you spend night after " +
-      "night at your computer. \n\nIt's real, I've seen it. And I can " +
-      "help you find it. But not right now. You're not ready yet.\n\n" +
-      "Use this program to track your progress\n\n" +
-      "The fl1ght.exe program was added to your home computer\n\n" +
-      "-jump3R",
+    "Je sais que tu peux le ressentir. Je sais que tu le cherches. " +
+    "C'est pourquoi tu passes nuit après " +
+    "nuit devant ton ordinateur. \n\nC'est réel, je l'ai vu. Et je peux " +
+    "t'aider à le trouver. Mais pas tout de suite. Tu n'es pas encore prêt·e.\n\n" +
+    "Utilise ce programme pour suivre ta progression\n\n" +
+    "Le programme fl1ght.exe a été ajouté à ton ordinateur personnel.\n\n" +
+    "-jump3R",
   ),
 
   [MessageFilenames.Jumper1]: new Message(
     MessageFilenames.Jumper1,
-    `Soon you will be contacted by a hacking group known as ${FactionNames.CyberSec}. ` +
-      "They can help you with your search. \n\n" +
-      "You should join them, garner their favor, and " +
-      "exploit them for their Augmentations. But do not trust them. " +
-      "They are not what they seem. No one is.\n\n" +
-      "-jump3R",
+    "Bientôt, tu seras contacté par un groupe de hackers connu sous le nom de ${FactionNames.CyberSec}. " +
+    "Ils peuvent t'aider dans ta recherche. \n\n" +
+    "Tu devrais les rejoindre, gagner leur faveur, et " +
+    "les exploiter pour leurs Améliorations. Mais ne leur fais pas confiance. " +
+    "Ils ne sont pas ce qu'ils semblent être. Personne ne l'est.\n\n" +
+    "-jump3R",
   ),
 
   [MessageFilenames.Jumper2]: new Message(
     MessageFilenames.Jumper2,
-    "Do not try to save the world. There is no world to save. If " +
-      "you want to find the truth, worry only about yourself. Ethics and " +
-      `morals will get you killed. \n\nWatch out for a hacking group known as ${FactionNames.NiteSec}.` +
-      "\n\n-jump3R",
+    "N'essaie pas de sauver le monde. Il n'y a pas de monde à sauver. Si tu veux trouver la vérité, préoccupe-toi seulement de toi-même. L'éthique et les + " +
+    "morales te tueront. \n\nMéfie-toi d'un groupe de piratage connu sous le nom de ${FactionNames.NiteSec}." +
+    "\n\n-jump3R,",
   ),
 
   [MessageFilenames.Jumper3]: new Message(
     MessageFilenames.Jumper3,
-    "You must learn to walk before you can run. And you must " +
-      `run before you can fly. Look for ${FactionNames.TheBlackHand}. \n\n` +
-      "I.I.I.I \n\n-jump3R",
+    "Tu dois apprendre à marcher avant de pouvoir courir. Et tu dois " +
+    "courir avant de pouvoir voler. Cherche ${FactionNames.TheBlackHand}. \n\n" +
+    "I.I.I.I \n\n-jump3R",
   ),
 
   [MessageFilenames.Jumper4]: new Message(
     MessageFilenames.Jumper4,
-    "To find what you are searching for, you must understand the bits. " +
-      "The bits are all around us. The runners will help you.\n\n" +
-      "-jump3R",
+    "Pour trouver ce que tu recherches, tu dois comprendre les bits. " +
+    "Les bits sont tout autour de nous. Les runners vont t'aider.\n\n" +
+    "-jump3R",
   ),
 
   //Messages from hacking factions
   [MessageFilenames.CyberSecTest]: new Message(
     MessageFilenames.CyberSecTest,
-    "We've been watching you. Your skills are very impressive. But you're wasting " +
-      "your talents. If you join us, you can put your skills to good use and change " +
-      "the world for the better. If you join us, we can unlock your full potential. \n\n" +
-      "But first, you must pass our test. Find and install the backdoor on our server. \n\n" +
+    "Nous te surveillons. Tes compétences sont très impressionnantes. Mais tu gaspilles " +
+      "ton talent. Si tu te joins à nous, tu pourras mettre tes compétences à bon usage et changer " +
+      "le monde pour le meilleur. Si tu nous rejoins, nous pourrons débloquer ton plein potentiel. \n\n" +
+      "Mais d'abord, tu dois passer notre test. Trouve et installe la porte dérobée sur notre serveur. \n\n" +
       `-${FactionNames.CyberSec}`,
   ),
 
   [MessageFilenames.NiteSecTest]: new Message(
     MessageFilenames.NiteSecTest,
-    "People say that the corrupted governments and corporations rule the world. " +
-      "Yes, maybe they do. But do you know who everyone really fears? People " +
-      "like us. Because they can't hide from us. Because they can't fight shadows " +
-      "and ideas with bullets. \n\n" +
-      "Join us, and people will fear you, too. \n\n" +
-      "Find and install the backdoor on our server, avmnite-02h. Then, we will contact you again." +
+    "Les gens disent que les gouvernements et les entreprises corrompus dirigent le monde. " +
+      "Oui, peut-être le font-ils. Mais sais-tu qui tout le monde craint vraiment ? Des personnes " +
+      "comme nous. Parce qu'ils ne peuvent pas se cacher de nous. Parce qu'ils ne peuvent pas combattre les ombres " +
+      "et les idées avec des balles. \n\n" +
+      "Rejoins-nous, et les gens te craindront aussi. \n\n" +
+      "Trouve et installe la porte dérobée sur notre serveur, avmnite-02h. Ensuite, nous te recontacterons." +
       `\n\n-${FactionNames.NiteSec}`,
   ),
 
   [MessageFilenames.BitRunnersTest]: new Message(
     MessageFilenames.BitRunnersTest,
-    "We know what you are doing. We know what drives you. We know " +
-      "what you are looking for. \n\n " +
-      "We can help you find the answers.\n\n" +
+    "Nous savons ce que tu fais. Nous savons ce qui te pousse. Nous savons " +
+      "ce que tu cherches. \n\n " +
+      "Nous pouvons t'aider à trouver les réponses.\n\n" +
       "run4theh111z",
   ),
 
