@@ -58,22 +58,22 @@ export function purchaseAugmentation(aug: Augmentation, fac: Faction, sing = fal
   const hasPrereqs = hasAugmentationPrereqs(aug);
   const augCosts = aug.getCost();
   if (!hasPrereqs) {
-    const txt = `You must first purchase or install ${aug.prereqs
-      .filter((req) => !Player.hasAugmentation(req))
-      .join(",")} before you can purchase this one.`;
+    const txt = `Vous devez d'abord acheter ou installer ${aug.prereqs
+        .filter((req) => !Player.hasAugmentation(req))
+        .join(",")} avant de pouvoir acheter celui-ci.`;
     if (sing) {
       return txt;
     } else {
       dialogBoxCreate(txt);
     }
   } else if (augCosts.moneyCost !== 0 && Player.money < augCosts.moneyCost) {
-    const txt = "You don't have enough money to purchase " + aug.name;
+    const txt = "Vous n'avez pas assez d'argent pour acheter " + aug.name;
     if (sing) {
       return txt;
     }
     dialogBoxCreate(txt);
   } else if (fac.playerReputation < augCosts.repCost) {
-    const txt = "You don't have enough faction reputation to purchase " + aug.name;
+    const txt = "Vous n'avez pas une réputation de faction suffisante pour acheter " + aug.name;
     if (sing) {
       return txt;
     }
@@ -91,16 +91,12 @@ export function purchaseAugmentation(aug: Augmentation, fac: Faction, sing = fal
       return "You purchased " + aug.name;
     } else if (!Settings.SuppressBuyAugmentationConfirmation) {
       dialogBoxCreate(
-        `You purchased ${aug.name}. Its enhancements will not take effect until they are installed.` +
-          "To install your augmentations, go to the 'Augmentations' tab on the left-hand navigation menu." +
-          "Purchasing additional augmentations will now be more expensive.",
+        "Vous avez acheté ${aug.name}. Ses améliorations ne prendront effet que lorsqu'elles seront installées. Pour installer vos augmentations, allez dans l'onglet 'Augmentations' dans le menu de navigation à gauche. L'achat d'augmentations supplémentaires sera désormais plus cher.",
       );
     }
   } else {
     dialogBoxCreate(
-      "Hmm, something went wrong when trying to purchase an Augmentation. " +
-        "Please report this to the game developer with an explanation of how to " +
-        "reproduce this.",
+      "Hmm, une erreur s'est produite lors de la tentative d'achat d'une Augmentation. Veuillez signaler ceci au développeur du jeu avec une explication de la manière de reproduire cette erreur.",
     );
   }
   return "";
