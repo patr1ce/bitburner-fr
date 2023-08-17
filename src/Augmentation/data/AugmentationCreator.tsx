@@ -427,7 +427,9 @@ export const initGeneralAugmentations = (): Augmentation[] => [
       FactionNames.FulcrumSecretTechnologies,
       FactionNames.Illuminati,
       FactionNames.Daedalus,
-      FactionNames
+      FactionNames.TheCovenant,
+    ],
+  }),
   new Augmentation({
     name: AugmentationNames.WiredReflexes,
     repCost: 1.25e3,

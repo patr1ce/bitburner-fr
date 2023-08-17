@@ -103,7 +103,7 @@ export function ProgramsRoot(): React.ReactElement {
                       Router.toPage(Page.Work);
                     }}
                   >
-                    Create program
+                    Créer un programme
                   </Button>
                 )}
                 {Player.hasProgram(program.name) || getHackingLevelRemaining(create.level) === 0 || (
