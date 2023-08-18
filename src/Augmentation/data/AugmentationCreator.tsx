@@ -1440,7 +1440,7 @@ export const initGeneralAugmentations = (): Augmentation[] => [
     hacking: 1.1,
     hacking_speed: 1.02,
     hacking_money: 1.1,
-    factions: [FactionNames.LaMainNoire],
+    factions: [FactionNames.TheBlackHand],
   }),
   new Augmentation({
     name: AugmentationNames.CRTX42AA,
